@@ -58,17 +58,18 @@ rm Hack-v2_020-ttf.zip  v4.7.0.tar.gz
 #Download config files from GitHub
 cd ~
 git clone https://github.com/BurningSmile/LinuxConfigs.git
-cd ~/LinuxConfigs/i3
+cd ~/LinuxConfigs/
 
 #Install configs
+cd ~/LinuxConfigs/termite_terminal
+sudo mkdir ~/.config/termite
+sudo cp config ~/.config/termite
+cd ~/LinuxConfigs/i3
 mkdir ~/.config/i3
 cp config ~/.config/i3/
 cp i3blocks.conf ~/.config/i3/
 cp -r scripts ~/.config/i3
 cp .Xresources ~
-cd Termite_Terminal
-sudo mkdir ~/.config/termite/
-sudo cp config ~/.config/termite/
 
 #Copy background image
 cp ~/LinuxConfigs/i3/Background/wallpaperArch.png ~/Pictures
