@@ -39,23 +39,25 @@ rm Hack-v2_020-ttf.zip  v4.7.0.tar.gz i3blocks.tar.gz
 
 #Download config files from GitHub
 cd ~
-git clone https://github.com/BurningSmile/LinuxConfigs.git
-cd ~/LinuxConfigs/
+git clone https://github.com/BurningSmile/dotfiles.git
+cd ~/dotfiles/
 
 #Install configs
-cd ~/LinuxConfigs/termite_terminal
+cd ~/dotfiles/Termite_Terminal
 sudo mkdir ~/.config/termite
 sudo cp config ~/.config/termite
-cd ~/LinuxConfigs/i3
+cd ~/dotfiles/i3
 mkdir ~/.config/i3
 cp config ~/.config/i3/
 cp i3blocks.conf ~/.config/i3/
 cp -r scripts ~/.config/i3
+cd ~/dotfiles/
 cp .Xresources ~
 
 #Copy background image
-cp ~/LinuxConfigs/i3/Background/wallpaperArch.png ~/Pictures
+cp ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
 
 cd ~
+rm -rf dotfiles/
 #Echo when complete
 echo "Install is finished. Restart Arch Linux to log into i3."
