@@ -97,14 +97,15 @@ cp .tmux.conf ~
 
 #install themes
 cd ~/dotfiles/.themes
-mkdir ~/.themes #Make a .themes folder if there is not one already present
+mkdir ~/.themes # Make .themes directory if not already present
 cp -r Numix/ ~/.themes/
 cp -r oomox-numix/ ~/.themes/
 
 #Install htop
 sudo pacman -S htop --noconfirm
-mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak #Backup htoprc if present
+mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
+mkdir ~/.config/htop # Mkae htop directory if not already present.
 cp htoprc ~/.config/htop/
 
 #Remove LinuxConfigs folder 
