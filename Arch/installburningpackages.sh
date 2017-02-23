@@ -101,6 +101,12 @@ mkdir ~/.themes #Make a .themes folder if there is not one already present
 cp -r Numix/ ~/.themes/
 cp -r oomox-numix/ ~/.themes/
 
+#Install htop
+sudo pacman -S htop --noconfirm
+mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak #Backup htoprc if present
+cd ~/dotfiles/htop
+cp htoprc ~/.config/htop/
+
 #Remove LinuxConfigs folder 
 cd ~
 rm -rf dotfiles/
