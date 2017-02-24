@@ -89,7 +89,7 @@ mv ~/vimrc ~/vimrc.bak #Backup vimrc if present
 cp .vimrc ~
 
 #install tmux
-sudo pacman -S tmux --noconfirm
+sudo pacman -S tmux xsel --noconfirm #xsel is for x copy support
 pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 cp ~/.tmux.conf ~/.tmux.conf.bak #Backup tmux.conf if present
