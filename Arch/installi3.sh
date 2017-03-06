@@ -3,6 +3,9 @@
 # Get sudo for script run
 sudo -v
 
+#install system updates
+sudo pacman -Syu --noconfirm
+
 #Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
 

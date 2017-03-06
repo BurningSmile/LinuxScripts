@@ -3,6 +3,9 @@
 # Get sudo permissions for script run
 sudo -v
 
+#update system packages
+sudo pacman -Syu --noconfirm
+
 #install git and wget if necessary
 sudo pacman -S --needed git wget --noconfirm
 
@@ -29,6 +32,8 @@ rm -rf pacuar cower
 rm pacaur.tar.gz cower.tar.gz
 cd ~
 
+#update aur packages
+pacaur -Syu --noconfirm --noedit
 # Start of install i3
 
 #Backup .Xresources
