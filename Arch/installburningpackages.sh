@@ -40,7 +40,7 @@ pacaur -Syu --noconfirm --noedit
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install required packages from main Repos
-sudo pacman -S --needed i3 rofi feh lxappearance compton git wget unzip --noconfirm
+sudo pacman -S --needed i3 rofi feh lxappearance compton unzip --noconfirm
 yes | sudo pacman -S termite
 
 #install i3blocks from AUR
