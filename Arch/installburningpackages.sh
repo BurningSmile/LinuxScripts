@@ -28,7 +28,7 @@ makepkg -si --noconfirm
 
 #cleanup Downloads folder
 cd ~/Downloads
-rm -rf pacuar cower
+rm -rf pacaur cower
 rm pacaur.tar.gz cower.tar.gz
 cd ~
 
