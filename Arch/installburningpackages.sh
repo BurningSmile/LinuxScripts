@@ -33,7 +33,7 @@ rm pacaur.tar.gz cower.tar.gz
 cd ~
 
 #update aur packages
-pacaur -Syu --noconfirm --noedit
+pacaur -Syua --noconfirm --noedit
 # Start of install i3
 
 #Backup .Xresources
