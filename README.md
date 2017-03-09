@@ -5,7 +5,7 @@ To use any of the scripts clone the repo
 
 git clone https://github.com/BurningSmile/LinuxScripts.git
 
-Make the script exudable then run it
+Make the script executable then run it
 
 cd LinuxScripts
 
