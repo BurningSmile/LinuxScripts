@@ -34,12 +34,12 @@ cp fontawesome-webfont.ttf ~/.fonts
 cd /tmp
 git clone https://github.com/BurningSmile/dotfiles.git
 
-cd /tmp/dotfiles/i3
+cd /tmp/dotfiles/Ubuntu-i3/
 mkdir ~/.config/i3
 cp config ~/.config/i3/
+cd /tmp/dotfiles/i3
 cp i3blocks.conf ~/.config/i3/
 cp -r scripts ~/.config/i3
-
 cd /tmp/dotfiles
 cp .Xresources ~
 
