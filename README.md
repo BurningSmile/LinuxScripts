@@ -3,6 +3,7 @@ A collection of my various Linux scripts
 
 To use any of the scripts clone the repo
 
+```
 cd /tmp
 
 git clone https://github.com/BurningSmile/LinuxScripts.git
@@ -14,3 +15,4 @@ cd LinuxScripts
 chmod +x script
 
 ./script
+```
