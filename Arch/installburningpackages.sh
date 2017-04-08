@@ -61,6 +61,9 @@ tar -xvzf v4.7.0.tar.gz
 cd 'Font-Awesome-4.7.0/fonts'
 cp fontawesome-webfont.ttf ~/.fonts
 
+#Reload font cache
+fc-cache -f -v
+
 #Clean up Downloads folder
 cd ~/Downloads
 rm -rf Font-Awesome-4.7.0 HackFont
