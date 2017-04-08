@@ -47,5 +47,4 @@ cp .Xresources ~
 cp /tmp/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
 
 cd ~
-
 echo "Install is finished. Restart Ubuntu Linux to log into i3."

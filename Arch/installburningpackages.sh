@@ -12,7 +12,7 @@ sudo pacman -S --needed git wget --noconfirm
 #install pacaur
 sudo pacman -S --needed base-devel --noconfirm
 
-cd ~/Downloads
+cd /tmp/
 sudo pacman -S --needed curl openssl yajl perl expac --noconfirm
 gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
@@ -20,20 +20,17 @@ tar -xvf cower.tar.gz
 cd cower
 makepkg -si --noconfirm
 
-cd ~/Downloads
+cd /tmp/
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
 tar -xvf pacaur.tar.gz
 cd pacaur
 makepkg -si --noconfirm
 
-#cleanup Downloads folder
-cd ~/Downloads
-rm -rf pacaur cower
-rm pacaur.tar.gz cower.tar.gz
 cd ~
 
 #update aur packages
 pacaur -Syua --noconfirm --noedit
+
 # Start of install i3
 
 #Backup .Xresources
@@ -48,14 +45,14 @@ pacaur -Sa i3blocks --noconfirm --noedit
 
 #Install fonts for system
 mkdir ~/.fonts
-cd ~/Downloads
+cd /tmp/
 wget https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip
 mkdir HackFont
 unzip Hack-v2_020-ttf.zip -d HackFont
 cd HackFont
 cp Hack-Regular.ttf ~/.fonts
 
-cd ~/Downloads
+cd /tmp/
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz
 tar -xvzf v4.7.0.tar.gz
 cd 'Font-Awesome-4.7.0/fonts'
@@ -64,15 +61,9 @@ cp fontawesome-webfont.ttf ~/.fonts
 #Reload font cache
 fc-cache -f -v
 
-#Clean up Downloads folder
-cd ~/Downloads
-rm -rf Font-Awesome-4.7.0 HackFont
-rm Hack-v2_020-ttf.zip  v4.7.0.tar.gz
-
 #Download config files from GitHub
 cd ~
 git clone https://github.com/BurningSmile/dotfiles.git
-cd ~/dotfiles/
 
 #Install configs
 cd ~/dotfiles/Termite_Terminal

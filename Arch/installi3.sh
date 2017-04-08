@@ -14,7 +14,7 @@ sudo pacman -S --needed i3 rofi feh lxappearance compton git wget unzip --noconf
 yes | sudo pacman -S termite
 
 #install i3blocks from AUR
-cd ~/Downloads
+cd /tmp/
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3blocks.tar.gz
 tar -xvf i3blocks.tar.gz
 cd i3blocks
@@ -22,14 +22,14 @@ makepkg -si --noconfirm
 
 #install fonts for system
 mkdir ~/.fonts
-cd ~/Downloads
+cd /tmp/
 wget https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip
 mkdir HackFont
 unzip Hack-v2_020-ttf.zip -d HackFont
 cd HackFont
 cp Hack-Regular.ttf ~/.fonts
 
-cd ~/Downloads
+cd /tmp/
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz
 tar -xvzf v4.7.0.tar.gz
 cd 'Font-Awesome-4.7.0/fonts'
@@ -37,11 +37,6 @@ cp fontawesome-webfont.ttf ~/.fonts
 
 #Update font cache
 fc-cache -f -v
-
-#Clean up Downloads folder
-cd ~/Downloads
-rm -rf Font-Awesome-4.7.0 HackFont i3blocks
-rm Hack-v2_020-ttf.zip  v4.7.0.tar.gz i3blocks.tar.gz
 
 #Download config files from GitHub
 cd ~
