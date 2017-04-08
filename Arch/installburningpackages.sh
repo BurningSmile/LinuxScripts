@@ -58,7 +58,7 @@ cp Hack-Regular.ttf ~/.fonts
 cd ~/Downloads
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz
 tar -xvzf v4.7.0.tar.gz
-cd  'Font-Awesome-4.7.0/fonts'
+cd 'Font-Awesome-4.7.0/fonts'
 cp fontawesome-webfont.ttf ~/.fonts
 
 #Clean up Downloads folder
