@@ -40,8 +40,9 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 sudo pacman -S --needed i3 rofi feh lxappearance compton unzip --noconfirm
 yes | sudo pacman -S termite
 
-#install i3blocks from AUR
-pacaur -Sa i3blocks --noconfirm --noedit
+#install polybar from AUR
+pacaur -Sa polybar --noconfirm --noedit
+sudo pacman -S jsoncpp
 
 #Install fonts for system
 mkdir ~/.fonts
@@ -66,19 +67,19 @@ cd ~
 git clone https://github.com/BurningSmile/dotfiles.git
 
 #Install configs
-cd ~/dotfiles/Termite_Terminal
-sudo mkdir ~/.config/termite
-sudo cp config ~/.config/termite
-cd ~/dotfiles/i3
-mkdir ~/.config/i3
-cp config ~/.config/i3/
-cp i3blocks.conf ~/.config/i3/
-cp -r scripts ~/.config/i3
 cd ~/dotfiles/
-cp .Xresources ~
+mkdir ~/.config/termite
+mv ./Termite_Terminal/config ~/.config/termite/
+mv ./polybar/config ~/.config/polybar/
+mv ./polybar/launch.sh ~/.conig/polybar/
+mv ./polybar/redshift.sh ~/.conig/polybar/
+mkdir ~/.config/i3
+mv config ~/.config/i3/
+cd ~/dotfiles/
+mv .Xresources ~
 
 #Copy background image
-cp ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
+mv ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
 
 #End of install i3
 
@@ -91,14 +92,14 @@ cd ~/dotfiles/vim
 mkdir ~/.vim/
 cp -r .vim/* ~/.vim/
 mv ~/vimrc ~/vimrc.bak #Backup vimrc if present
-cp .vimrc ~
+mv .vimrc ~
 
 #install tmux
 sudo pacman -S tmux xsel --noconfirm #xsel is for x copy support
 pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 cp ~/.tmux.conf ~/.tmux.conf.bak #Backup tmux.conf if present
-cp .tmux.conf ~
+mv .tmux.conf ~
 
 #install themes
 cd ~/dotfiles/.themes
@@ -111,7 +112,7 @@ sudo pacman -S htop --noconfirm
 mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
 mkdir ~/.config/htop # Mkae htop directory if not already present.
-cp htoprc ~/.config/htop/
+mv htoprc ~/.config/htop/
 
 #Remove LinuxConfigs folder 
 cd ~
