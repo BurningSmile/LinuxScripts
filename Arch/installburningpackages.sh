@@ -74,7 +74,7 @@ mv ./polybar/config ~/.config/polybar/
 mv ./polybar/launch.sh ~/.conig/polybar/
 mv ./polybar/redshift.sh ~/.conig/polybar/
 mkdir ~/.config/i3
-mv config ~/.config/i3/
+mv ./i3/config ~/.config/i3/
 cd ~/dotfiles/
 mv .Xresources ~
 
