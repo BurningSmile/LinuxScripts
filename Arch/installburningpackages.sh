@@ -42,7 +42,7 @@ yes | sudo pacman -S termite
 
 #install polybar from AUR
 pacaur -Sa polybar --noconfirm --noedit
-sudo pacman -S jsoncpp
+sudo pacman -S jsoncpp --noconfirm
 
 #Install fonts for system
 mkdir ~/.fonts
