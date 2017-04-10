@@ -70,6 +70,7 @@ git clone https://github.com/BurningSmile/dotfiles.git
 cd ~/dotfiles/
 mkdir ~/.config/termite
 mv ./Termite_Terminal/config ~/.config/termite/
+mkdir ~/.config/polybar/
 mv ./polybar/config ~/.config/polybar/
 mv ./polybar/launch.sh ~/.conig/polybar/
 mv ./polybar/redshift.sh ~/.conig/polybar/
