@@ -1,3 +1,5 @@
+#Please don't use this script right now. It is under work and will not work with my current dotfiles!
+
 #!/bin/bash
 
 # Get sudo for script run
