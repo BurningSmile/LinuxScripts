@@ -88,19 +88,19 @@ pacaur -S vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
 cp -r .vim/* ~/.vim/
-mv ~/vimrc ~/vimrc.bak #Backup vimrc if present
+mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 
 #install tmux
-sudo pacman -S tmux xsel --noconfirm #xsel is for x copy support
+sudo pacman -S tmux xsel --noconfirm # xsel is for x copy support
 pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
-cp ~/.tmux.conf ~/.tmux.conf.bak #Backup tmux.conf if present
+mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
 
 #install themes
 cd ~/dotfiles/.themes
-mkdir ~/.themes # Make .themes directory if not already present
+mkdir ~/.themes 
 cp -r Numix/ ~/.themes/
 cp -r oomox-numix/ ~/.themes/
 
@@ -108,7 +108,7 @@ cp -r oomox-numix/ ~/.themes/
 sudo pacman -S htop --noconfirm
 mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
-mkdir ~/.config/htop # Mkae htop directory if not already present.
+mkdir ~/.config/htop .
 mv htoprc ~/.config/htop/
 
 #Remove LinuxConfigs folder 
