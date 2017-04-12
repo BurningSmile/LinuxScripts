@@ -26,8 +26,6 @@ tar -xvf pacaur.tar.gz
 cd pacaur
 makepkg -si --noconfirm
 
-cd ~
-
 #update aur packages
 pacaur -Syua --noconfirm --noedit
 
@@ -83,8 +81,6 @@ mv .Xresources ~
 mv ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
 
 #End of install i3
-
-cd ~
 
 #install vim
 sudo pacman -S vim  --noconfirm
