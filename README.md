@@ -28,3 +28,5 @@ Someo other sources you may find usefull
 https://wiki.archlinux.org/index.php/KVM
 https://wiki.archlinux.org/index.php/QEMU
 ```
+
+#Please edit the scripts to use your username or other directories you want used!
