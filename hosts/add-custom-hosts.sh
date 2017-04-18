@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/usernamehere/.scripts/hosts/
+cd ~/.scripts/hosts/
 cat <<EOT >> myhosts
 
 0.0.0.0 pinion.gg
