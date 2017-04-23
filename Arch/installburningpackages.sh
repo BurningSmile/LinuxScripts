@@ -115,6 +115,9 @@ mv htoprc ~/.config/htop/
 cd ~
 rm -rf dotfiles/
 
+#install the Fuck
+sudo pacman -S thefuck --noconfirm
+
 #install zshell
 sudo pacman -S zsh --noconfirm
 
