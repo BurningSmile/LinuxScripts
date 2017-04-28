@@ -21,12 +21,14 @@ $ wget https://www.kraxel.org/repos/jenkins/edk2/edk2.git-ovmf-x64-0-20170410.b2
 $ rpmextract.sh <Press tab for completion>
 # mv -f ./usr/share/* /usr/share/ && cd && rm -rd /tmp/rpm_extract 
 
-#If you get a wget error please replace the end of the file with the new version from the link.Also please open a issue report so I can update this.
-Please refrense your distrobutions documentation on qemu and kvm or read the official documentation here
+If you get a wget error please replace the end of the file with the new version from the URL.
+Also please open a issue report so I can update the Readme file with the new link.
+
+Please reference your distribution's documentation on qemu and kvm or read the official documentation here
 https://www.linux-kvm.org/page/Documents
 Someo other sources you may find usefull 
 https://wiki.archlinux.org/index.php/KVM
 https://wiki.archlinux.org/index.php/QEMU
 ```
 
-#Please edit the scripts to use your username or other directories you want used!
+# Please edit the scripts to use your username or other directories you want used!
