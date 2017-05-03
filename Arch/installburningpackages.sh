@@ -29,7 +29,8 @@ makepkg -si --noconfirm
 #update aur packages
 pacaur -Syua --noconfirm --noedit
 
-# Start of install i3
+#Install numix-curser-theme
+pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
 
 #Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
@@ -87,8 +88,6 @@ mv .Xresources ~
 
 #Copy background image
 mv ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
-
-#End of install i3
 
 #install vim
 sudo pacman -S vim  --noconfirm
