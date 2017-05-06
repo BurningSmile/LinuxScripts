@@ -10,7 +10,7 @@ cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd /tmp/my_vars.fd
 qemu-system-x86_64 \
        -enable-kvm \
        -boot order=c \
-       -drive file=/home/david/virtual_machines/Windows10/Windows10disk,format=raw \
+       -drive file=/home/USERNAMEHERE/virtual_machines/Windows10/Windows10disk,format=raw \
        -m 4G \
        -cpu host \
        -smp 4,cores=2,threads=2,sockets=1 \
