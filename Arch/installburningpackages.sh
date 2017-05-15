@@ -108,7 +108,7 @@ mv .tmux.conf ~
 cd ~
 
 #install themes
-sudo pacman -S arc-gtk-theme
+sudo pacman -S arc-gtk-theme --noconfirm
 
 #Install htop
 sudo pacman -S htop --noconfirm
