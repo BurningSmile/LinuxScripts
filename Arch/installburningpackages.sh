@@ -97,6 +97,7 @@ mkdir ~/.vim/
 cp -r .vim/* ~/.vim/
 mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
+cd ~
 
 #install tmux
 sudo pacman -S tmux xsel --noconfirm # xsel is for x copy support
@@ -104,12 +105,10 @@ pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
+cd ~
 
 #install themes
-cd ~/dotfiles/.themes
-mkdir ~/.themes 
-cp -r Numix/ ~/.themes/
-cp -r oomox-numix/ ~/.themes/
+sudo pacman -S arc-gtk-theme
 
 #Install htop
 sudo pacman -S htop --noconfirm
@@ -117,6 +116,29 @@ mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
 mkdir ~/.config/htop .
 mv htoprc ~/.config/htop/
+cd ~
+
+#Setup mpd and mpc
+sudo pacman -S mpd mpc --noconfirm
+mkdir -p ~/.config/mpd/
+mkdir -p ~/.mpd/playlists
+cd ~/.mpd/
+touch database log pid state sticker.sql
+mv ~/.config/mpd/mpd.conf ~/.config/mpd/mpd.conf.bak #Backup config if present
+mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
+
+#Setup ncmpcpp
+sudo pacman -S ncmpcpp --noconfirm
+mkdir ~/.ncmpcpp/
+mv ~/.ncmpcpp/config ~/.ncmpcpp/config.bak #Backup config if present
+mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
+cd ~
+
+# Setup Cava
+sudo pacman -S cava --noconfirm
+mkdir ~/.config/cava
+mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
+mv ~/dotfiles/cava/config ~/.config/cava
 
 #Remove LinuxConfigs folder 
 cd ~
