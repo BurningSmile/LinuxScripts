@@ -36,12 +36,11 @@ pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install required packages from main Repos
-sudo pacman -S --needed i3 rofi feh lxappearance compton unzip --noconfirm
+sudo pacman -S --needed i3 rofi feh lxappearance compton unzip libmpdclient jsoncpp --noconfirm
 yes | sudo pacman -S termite
 
 #install polybar from AUR
 pacaur -Sa polybar --noconfirm --noedit
-sudo pacman -S jsoncpp --noconfirm
 
 #Install fonts for system
 mkdir ~/.fonts
