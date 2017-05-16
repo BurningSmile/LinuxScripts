@@ -37,7 +37,6 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install required packages from main Repos
 sudo pacman -S --needed i3 rofi feh lxappearance compton unzip libmpdclient jsoncpp --noconfirm
-yes | sudo pacman -S termite
 
 #install polybar from AUR
 pacaur -Sa polybar --noconfirm --noedit
@@ -138,6 +137,11 @@ sudo pacman -S cava --noconfirm
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
+
+#Install urxvt
+sudo pacman -S rxvt-unicode --noconfirm
+pacaur -S urxvt-vtwheel
+pacaur -S urxvt-fullscreen
 
 #Remove LinuxConfigs folder 
 cd ~
