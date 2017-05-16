@@ -140,8 +140,7 @@ mv ~/dotfiles/cava/config ~/.config/cava
 
 #Install urxvt
 sudo pacman -S rxvt-unicode --noconfirm
-pacaur -S urxvt-vtwheel
-pacaur -S urxvt-fullscreen
+pacaur -S urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
 #Remove LinuxConfigs folder 
 cd ~
