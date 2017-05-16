@@ -133,7 +133,7 @@ mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # Setup Cava
-sudo pacman -S cava --noconfirm
+pacaur -S cava --noedit --noconfirm
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
