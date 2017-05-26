@@ -81,8 +81,8 @@ mv ./polybar/launch.sh ~/.config/polybar/
 mv ./polybar/redshift.sh ~/.config/polybar/
 mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
-cd ~/dotfiles/
 mv .Xresources ~
+mv ./zsh/.zshrc ~/.zshrc.bak
 
 #Copy background image
 mv ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
