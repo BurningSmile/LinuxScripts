@@ -85,7 +85,7 @@ mv .Xresources ~
 mv ./zsh/.zshrc ~/.zshrc.bak
 
 #Copy background image
-mv ~/dotfiles/i3/Background/wallpaperArch.png ~/Pictures
+mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures
 
 #install vim
 sudo pacman -S vim  --noconfirm
