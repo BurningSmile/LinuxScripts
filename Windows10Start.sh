@@ -7,26 +7,27 @@ sudo modprobe virtio
 cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd /tmp/my_vars.fd
 
 # Load network bridge on eno1 interface
-sudo /home/david/.scripts/Virtual-Machines/qemu-bridge-ifup.sh
+sudo /home/david/.scripts/Virtual-Machines/qemu-ifup.sh
 
 #Start Vm
 qemu-system-x86_64 \
-       -enable-kvm \
-       -boot order=c \
-       -drive file=/home/david/virtual-machines/Windows-10/Windows10disk,format=raw \
-       -m 4G \
-       -cpu host \
-       -smp 4,cores=2,threads=2,sockets=1 \
-       -mem-prealloc \
-       -usbdevice tablet \
-       -vga qxl\
-       -soundhw hda \
-       -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd \
-       -drive if=pflash,format=raw,file=/tmp/my_vars.fd \
-       -spice port=3001,disable-ticketing \
-       -device virtio-serial \
-       -chardev spicevmc,id=vdagent,debug=0,name=vdagent \
-       -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
+        -enable-kvm \
+        -boot order=c \
+        -drive file=/home/david/virtual-machines/windows10/image_file,index=0,format=qcow2,media=disk,if=virtio \
+        -m 4G \
+        -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time \
+        -smp 4,cores=2,threads=2,sockets=1 \
+        -mem-prealloc \
+        -machine type=pc,accel=kvm \
+        -usbdevice tablet \
+        -vga qxl \
+        -soundhw hda \
+        -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd \
+        -drive if=pflash,format=raw,file=/tmp/my_vars.fd \
+        -spice port=3001,disable-ticketing \
+	-device virtio-serial \
+	-chardev spicevmc,id=vdagent,debug=0,name=vdagent \
+	-device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
 	-device ich9-usb-ehci1,id=usb \
 	-device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
 	-device ich9-usb-uhci2,masterbus=usb.0,firstport=2 \
@@ -41,4 +42,4 @@ qemu-system-x86_64 \
 	"$@"
 
 # Close network bridge
-sudo /home/david/.scripts/Virtual-Machines/qemu-bridge-ifdown.sh
+sudo /home/david/.scripts/Virtual-Machines/qemu-ifdown.sh
