@@ -92,7 +92,7 @@ sudo pacman -S vim  --noconfirm
 pacaur -S vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
-cp -r .vim/* ~/.vim/
+cp -r .vim/. ~/.vim/
 mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~
@@ -103,6 +103,8 @@ pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
+mv ~/dotfiles/tmux/.tmux ~
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
 
 #install themes
@@ -112,7 +114,7 @@ sudo pacman -S arc-gtk-theme --noconfirm
 sudo pacman -S htop --noconfirm
 mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
-mkdir ~/.config/htop .
+mkdir ~/.config/htop
 mv htoprc ~/.config/htop/
 cd ~
 
