@@ -59,9 +59,6 @@ mv /var/www/html/index.html /var/www/html/index.html.bak
 su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $METAMODURL && tar -xvf $METAMODFILENAME  && rm $METAMODFILENAME'
 su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $SOURCEMODURL && tar xvf $SOURCEMODFILENAME && rm $SOURCEMODFILENAME' 
 
-su - tf2server -c 'cat '"$STEAMID" "99:z" //$USERNAME' >> /home/tf2server/addons/souremod/config/admins_simple.ini'
-
-
 #Setup Steam id's for admin
 cat <<EOF >> /home/tf2server/steamid.sh
 
