@@ -31,7 +31,6 @@ sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install mail
 adduser tf2server
 passwd tf2server
 
-su - tf2server -c whoami
 su - tf2server -c 'wget https://gameservermanagers.com/dl/tf2server'
 su - tf2server -c 'chmod +x /home/tf2server/tf2server'
 su - tf2server -c '/home/tf2server/tf2server install'
