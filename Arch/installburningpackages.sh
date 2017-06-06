@@ -98,6 +98,9 @@ mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~
 
+#Install powerline
+sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
+
 #install tmux
 sudo pacman -S tmux xsel --noconfirm # xsel is for x copy support
 pacaur -S tmux-bash-completition --noconfirm --noedit
