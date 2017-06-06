@@ -79,6 +79,7 @@ mkdir ~/.config/polybar/
 mv ./polybar/config ~/.config/polybar/
 mv ./polybar/launch.sh ~/.config/polybar/
 mv ./polybar/redshift.sh ~/.config/polybar/
+mv ./polybar/tempcores.sh ~/.config/polybar
 mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
 mv .Xresources ~
