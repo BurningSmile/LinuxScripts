@@ -17,9 +17,9 @@ chmod +x script
 For uefi support you need to do the following.[Standard Unix formating]
 # install rpmextract as root from your distros package manager.
 $ mkdir /tmp/rpm_extract && cd /tmp/rpm_extract
-$ wget https://www.kraxel.org/repos/jenkins/edk2/edk2.git-ovmf-x64-0-20170410.b2624.gc571957.noarch.rpm
+$ wget https://www.kraxel.org/repos/jenkins/edk2/edk2.git-ovmf-x64-0-20170608.b2753.g8f98c76.noarch.rpm
 $ rpmextract.sh <Press tab for completion>
-# mv -f ./usr/share/* /usr/share/ && cd && rm -rd /tmp/rpm_extract 
+# mv -f ./usr/share/* /usr/share/ &&  $ sudo mv -f ./usr/share/doc/* /usr/share/doc/ && cd && rm -rd /tmp/rpm_extract 
 
 If you get a wget error please replace the end of the file with the new version from the URL.
 Also please open a issue report so I can update the Readme file with the new link.
