@@ -26,12 +26,11 @@ apt clean
 sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/apt/apt.conf.d/10periodic
 
 #Install dependices for the tf2server instance
-sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install binutils mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386
+sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install binutils mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 -y
 
 adduser tf2server
 passwd tf2server
 
-su - tf2server -c whoami
 su - tf2server -c 'wget https://gameservermanagers.com/dl/tf2server'
 su - tf2server -c 'chmod +x /home/tf2server/tf2server'
 su - tf2server -c '/home/tf2server/tf2server auto-install'
@@ -39,15 +38,11 @@ su - tf2server -c 'vim /home/tf2server/tf2server'
 su - tf2server -c '/home/tf2server/tf2server start'
 
 # Allow 27015 and 27020 through the firewall
-iptables -A INPUT -i venet0 -p tcp -m tcp --dport 27015 -m state --state NEW,ESTABLISHED -j ACCEPT 
-iptables -A INPUT -i venet0 -p udp -m udp --dport 27015 -m state --state NEW,ESTABLISHED -j ACCEPT 
-iptables -A INPUT -i venet0 -p tcp -m tcp --dport 27020 -m state --state NEW,ESTABLISHED -j ACCEPT 
-iptables -A INPUT -i venet0 -p udp -m udp --dport 27020 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables-save > /etc/iptables/rules.v4
-ip6tables-save > /etc/iptables/rules.v6
+ufw allow 27015
+ufw allow 27020
 
 #Setup web server
-apt install apache2
+apt install apache2 -y
 mkdir -p /var/www/html/fastdl/tf2/
 cd /var/www/html/fastdl/tf2/
 ln -s /home/tf2server/serverfiles/tf/maps maps
@@ -56,16 +51,26 @@ systemctl enable apache2.service
 mv /var/www/html/index.html /var/www/html/index.html.bak
 
 #Setup metamod and sourcemod
-su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $METAMODURL && tar -xvf $METAMODFILENAME  && rm $METAMODFILENAME'
-su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $SOURCEMODURL && tar xvf $SOURCEMODFILENAME && rm $SOURCEMODFILENAME' 
+cat <<EOF>> /home/tf2server/source-metamodinstall.sh
+cd /home/tf2server/serverfiles/tf
+wget $METAMODURL
+tar -xvf $METAMODFILENAME
+rm $METAMODFILENAME
 
-su - tf2server -c 'cat '"$STEAMID" "99:z" //$USERNAME' >> /home/tf2server/addons/souremod/config/admins_simple.ini'
+wget $SOURCEMODURL
+tar -xvf $SOURCEMODFILENAME
+rm $SOURCEMODFILENAME
+EOF
 
+chown tf2server:tf2server /home/tf2server/source-metamodinstall.sh
+chmod +x /home/tf2server/source-metamodinstall.sh
+su - tf2server -c '/home/tf2server/source-metamodinstall.sh'
+su - tf2server -c 'rm /home/tf2server/source-metamodinstall.sh'
 
 #Setup Steam id's for admin
 cat <<EOF >> /home/tf2server/steamid.sh
 
-cat <<EOL >> /home/tf2server/serverfiles/tf/addons/souremod/config/admins_simple.ini
+cat <<EOL >> /home/tf2server/serverfiles/tf/addons/sourcemod/configs/admins_simple.ini
 "$STEAMID" "99:z" //$USERNAME
 EOL
 
@@ -79,6 +84,3 @@ su - tf2server -c '/home/tf2server/steamid.sh'
 
 #Cronjobs
 #Will be added once I can get this working properly. Currently it seems it has to be done manually.
-
-
-
