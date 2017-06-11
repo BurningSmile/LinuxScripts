@@ -26,14 +26,15 @@ apt clean
 sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/apt/apt.conf.d/10periodic
 
 #Install dependices for the tf2server instance
-sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386
+sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install binutils mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386
 
 adduser tf2server
 passwd tf2server
 
+su - tf2server -c whoami
 su - tf2server -c 'wget https://gameservermanagers.com/dl/tf2server'
 su - tf2server -c 'chmod +x /home/tf2server/tf2server'
-su - tf2server -c '/home/tf2server/tf2server install'
+su - tf2server -c '/home/tf2server/tf2server auto-install'
 su - tf2server -c 'vim /home/tf2server/tf2server'
 su - tf2server -c '/home/tf2server/tf2server start'
 
@@ -57,6 +58,9 @@ mv /var/www/html/index.html /var/www/html/index.html.bak
 #Setup metamod and sourcemod
 su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $METAMODURL && tar -xvf $METAMODFILENAME  && rm $METAMODFILENAME'
 su - tf2server -c 'cd /home/tf2server/serverfiles/tf/ && wget $SOURCEMODURL && tar xvf $SOURCEMODFILENAME && rm $SOURCEMODFILENAME' 
+
+su - tf2server -c 'cat '"$STEAMID" "99:z" //$USERNAME' >> /home/tf2server/addons/souremod/config/admins_simple.ini'
+
 
 #Setup Steam id's for admin
 cat <<EOF >> /home/tf2server/steamid.sh
