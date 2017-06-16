@@ -7,8 +7,8 @@
 #Variables used in script. Only edit the STEAMID variable.
 METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git957-linux.tar.gz'
 METAMODFILENAME='mmsource-1.10.7-git957-linux.tar.gz'
-SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6002-linux.tar.gz'
-SOURCEMODFILENAME='sourcemod-1.8.0-git6002-linux.tar.gz'
+SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6005-linux.tar.gz'
+SOURCEMODFILENAME='sourcemod-1.8.0-git6005-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
 USERNAME='PUT-USERNAME-HERE'
 
@@ -78,6 +78,8 @@ EOF
 
 chmod +x /home/tf2server/steamid.sh
 su - tf2server -c '/home/tf2server/steamid.sh'
+
+su - tf2server -c '/home/tf2server/tf2server restart'
 
 #CFG.tf
 #This needs to be worked on, placeholder until I can find a way to automate this
