@@ -29,19 +29,19 @@ makepkg -si --noconfirm
 #update aur packages
 pacaur -Syua --noconfirm --noedit
 
-#Install numix-curser-theme
+#install numix-curser-theme
 pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
 
-#Backup .Xresources
+#backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
 
-# Install required packages from main Repos
-sudo pacman -S --needed i3 rofi feh lxappearance compton unzip libmpdclient jsoncpp --noconfirm
+#install required packages from main Repos
+sudo pacman -S --needed compton dunst feh i3 jsoncpp libmpdclient lxappearance rofi unzip --noconfirm
 
 #install polybar from AUR
 pacaur -Sa polybar --noconfirm --noedit
 
-#Install fonts for system
+#install fonts for system
 mkdir ~/.fonts
 cd /tmp/
 wget https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip
@@ -56,10 +56,10 @@ tar -xvzf v4.7.0.tar.gz
 cd 'Font-Awesome-4.7.0/fonts'
 cp fontawesome-webfont.ttf ~/.fonts
 
-#Reload font cache
+#reload font cache
 fc-cache -f -v
 
-#Install i3-lock-fancy
+#install i3-lock-fancy
 pacaur -S i3lock-fancy-git --noconfirm --noedit
 cd /tmp/
 git clone https://github.com/meskarune/i3lock-fancy.git
@@ -67,11 +67,11 @@ cd i3lock-fancy
 sudo mv icons/ /usr/local/bin
 sudo mv lock /usr/local/bin
 
-#Download config files from GitHub
+#download config files from GitHub
 cd ~
 git clone https://github.com/BurningSmile/dotfiles.git
 
-#Install configs
+#install configs
 cd ~/dotfiles/
 mkdir ~/.config/termite
 mv ./Termite_Terminal/config ~/.config/termite/
@@ -84,8 +84,10 @@ mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
 mv .Xresources ~
 mv ./zsh/.zshrc ~/.zshrc.bak
+mkdir ~/.config/dunst
+mv ./dunst/dunstrc ~/dunstrc
 
-#Copy background image
+#copy background image
 mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures
 
 #install vim
@@ -98,7 +100,7 @@ mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~
 
-#Install powerline
+#install powerline
 sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
 
 #install tmux
@@ -114,7 +116,7 @@ cd ~
 #install themes
 sudo pacman -S arc-gtk-theme --noconfirm
 
-#Install htop
+#install htop
 sudo pacman -S htop --noconfirm
 mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
@@ -122,7 +124,7 @@ mkdir ~/.config/htop
 mv htoprc ~/.config/htop/
 cd ~
 
-#Setup mpd and mpc
+#setup mpd and mpc
 sudo pacman -S mpd mpc --noconfirm
 mkdir -p ~/.config/mpd/
 mkdir -p ~/.mpd/playlists
@@ -131,24 +133,24 @@ touch database log pid state sticker.sql
 mv ~/.config/mpd/mpd.conf ~/.config/mpd/mpd.conf.bak #Backup config if present
 mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
 
-#Setup ncmpcpp
+#setup ncmpcpp
 sudo pacman -S ncmpcpp --noconfirm
 mkdir ~/.ncmpcpp/
 mv ~/.ncmpcpp/config ~/.ncmpcpp/config.bak #Backup config if present
 mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
-# Setup Cava
+# setup Cava
 pacaur -S cava --noedit --noconfirm
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
 
-#Install urxvt
+#setup urxvt
 sudo pacman -S rxvt-unicode --noconfirm
 pacaur -S urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
-#Remove LinuxConfigs folder 
+#remove LinuxConfigs folder 
 cd ~
 rm -rf dotfiles/
 
@@ -158,5 +160,5 @@ sudo pacman -S thefuck --noconfirm
 #install zshell
 sudo pacman -S zsh --noconfirm
 
-# install ohmyzsh
+#install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
