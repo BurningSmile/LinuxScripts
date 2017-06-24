@@ -73,8 +73,6 @@ git clone https://github.com/BurningSmile/dotfiles.git
 
 #install configs
 cd ~/dotfiles/
-mkdir ~/.config/termite
-mv ./Termite_Terminal/config ~/.config/termite/
 mkdir ~/.config/polybar/
 mv ./polybar/config ~/.config/polybar/
 mv ./polybar/launch.sh ~/.config/polybar/
@@ -113,7 +111,7 @@ mv ~/dotfiles/tmux/.tmux ~
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
 
-#install themes
+#install theme
 sudo pacman -S arc-gtk-theme --noconfirm
 
 #install htop
@@ -150,7 +148,7 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo pacman -S rxvt-unicode --noconfirm
 pacaur -S urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
-#remove LinuxConfigs folder 
+#remove LinuxConfigs folder
 cd ~
 rm -rf dotfiles/
 
