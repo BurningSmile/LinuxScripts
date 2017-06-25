@@ -89,7 +89,7 @@ mv ./zsh/.zshrc ~/.zshrc.bak
 mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures
 
 #install vim
-sudo pacman -S vim  --noconfirm
+sudo pacman -S gvim  --noconfirm
 pacaur -S vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
