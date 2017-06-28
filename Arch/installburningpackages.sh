@@ -98,6 +98,18 @@ mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~
 
+#install vim plugins
+vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
+
+#install you-complete-me for vim auto completion.
+sudo pacman -S cmake clang python python3 --noconfirm
+mkdir /tmp/ycm_build
+cd /tmp/ycm_build
+cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+cmake --build . --target ycm_core --config Release
+cd ~
+
 #install powerline
 sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
 
