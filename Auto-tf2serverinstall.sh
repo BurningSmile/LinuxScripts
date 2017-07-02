@@ -80,6 +80,7 @@ EOF
 
 chmod +x /home/tf2server/steamid.sh
 su - tf2server -c '/home/tf2server/steamid.sh'
+su - tf2server -c 'rm /home/tf2server/steamid.sh'
 
 su - tf2server -c '/home/tf2server/tf2server restart'
 
@@ -89,3 +90,6 @@ su - tf2server -c '/home/tf2server/tf2server restart'
 #add cronjobs
 su - tf2server -c 'crontab -l | { cat; echo "0 0 * * * /home/tf2server/tf2server restart"; } | crontab -'
 su - tf2server -c 'crontab -l | { cat; echo "@reboot /home/tf2server/tf2server start"; } | crontab -'
+
+#Set a restart of the server for midnight incase it is not done manually.
+sudo shutdown -r -t 0:00
