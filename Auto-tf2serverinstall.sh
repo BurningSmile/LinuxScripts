@@ -2,15 +2,15 @@
 #Purpose - This is a script to automate the process of installing a tf2server stack on a clean ubuntu 16.04.2 LTS server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
 #Written on 06-05-2017
 #Written by Burning-Smile
-#last modified -6-05-2017
+#last modified 06-12-2017
 
-#Variables used in script. Only edit the STEAMID variable.
+#Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
 METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git957-linux.tar.gz'
 METAMODFILENAME='mmsource-1.10.7-git957-linux.tar.gz'
 SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6005-linux.tar.gz'
 SOURCEMODFILENAME='sourcemod-1.8.0-git6005-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
-USERNAME='PUT-USERNAME-HERE'
+STEAMUSERNAME='PUT-Steam-USERNAME-HERE'
 
 #Get sudo rights just in case
 sudo -v
@@ -28,13 +28,15 @@ sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/a
 #Install dependices for the tf2server instance
 sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install binutils mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 -y
 
-adduser tf2server
+useradd -m --password default tf2server
 passwd tf2server
 
-su - tf2server -c 'wget https://gameservermanagers.com/dl/tf2server'
-su - tf2server -c 'chmod +x /home/tf2server/tf2server'
+su - tf2server -c 'wget -N --no-check-certificate https://gameservermanagers.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'
 su - tf2server -c '/home/tf2server/tf2server auto-install'
-su - tf2server -c 'vim /home/tf2server/tf2server'
+su - tf2server -c 'echo 'defaultmap="cp_badlands"' > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg' 
+su - tf2server -c 'echo 'maxplayers="16"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg' 
+su - tf2server -c 'echo 'updateonstart="on"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg' 
+su - tf2server -c 'vim /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
 su - tf2server -c '/home/tf2server/tf2server start'
 
 # Allow 27015 and 27020 through the firewall
@@ -71,7 +73,7 @@ su - tf2server -c 'rm /home/tf2server/source-metamodinstall.sh'
 cat <<EOF >> /home/tf2server/steamid.sh
 
 cat <<EOL >> /home/tf2server/serverfiles/tf/addons/sourcemod/configs/admins_simple.ini
-"$STEAMID" "99:z" //$USERNAME
+"$STEAMID" "99:z" //$STEAMUSERNAME 
 EOL
 
 EOF
@@ -84,5 +86,6 @@ su - tf2server -c '/home/tf2server/tf2server restart'
 #CFG.tf
 #This needs to be worked on, placeholder until I can find a way to automate this
 
-#Cronjobs
-#Will be added once I can get this working properly. Currently it seems it has to be done manually.
+#add cronjobs
+su - tf2server -c 'crontab -l | { cat; echo "0 0 * * * /home/tf2server/tf2server restart"; } | crontab -'
+su - tf2server -c 'crontab -l | { cat; echo "@reboot /home/tf2server/tf2server start"; } | crontab -'
