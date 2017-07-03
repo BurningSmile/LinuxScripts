@@ -16,13 +16,13 @@ cd /tmp/
 sudo pacman -S --needed curl openssl yajl perl expac --noconfirm
 gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
-tar -xvf cower.tar.gz
+tar -xzf cower.tar.gz
 cd cower
 makepkg -si --noconfirm
 
 cd /tmp/
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
-tar -xvf pacaur.tar.gz
+tar -xzf pacaur.tar.gz
 cd pacaur
 makepkg -si --noconfirm
 
@@ -52,7 +52,7 @@ cp Hack-Regular.ttf ~/.fonts
 
 cd /tmp/
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz
-tar -xvzf v4.7.0.tar.gz
+tar -xzf v4.7.0.tar.gz
 cd 'Font-Awesome-4.7.0/fonts'
 cp fontawesome-webfont.ttf ~/.fonts
 
