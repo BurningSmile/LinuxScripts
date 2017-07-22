@@ -14,19 +14,19 @@ chmod +x script
 
 # Running the Windows10 vm script
 ```
-For uefi support you need to do the following.[Standard Unix formating]
-# install rpmextract as root from your distros package manager.
+For uefi support you need to do the following.[Standard Unix formatting]
+# install rpmextract as root from your distribution's package manager.
 $ mkdir /tmp/rpm_extract && cd /tmp/rpm_extract
 $ wget https://www.kraxel.org/repos/jenkins/edk2/edk2.git-ovmf-x64-0-20170608.b2755.gec4910c.noarch.rpm
 $ rpmextract.sh <Press tab for completion>
-# mv -f ./usr/share/* /usr/share/ && sudo mv -f ./usr/share/doc/* /usr/share/doc/ && cd && rm -rd /tmp/rpm_extract 
+# mv -f ./usr/share/* /usr/share/ && sudo mv -f ./usr/share/doc/* /usr/share/doc/ && cd && rm -rd /tmp/rpm_extract
 
 If you get a wget error please replace the end of the file with the new version from the URL.
 Also please open a issue report so I can update the Readme file with the new link.
 
 Please reference your distribution's documentation on qemu and kvm or read the official documentation here
 https://www.linux-kvm.org/page/Documents
-Someo other sources you may find usefull 
+Some other sources you may find usefull
 https://wiki.archlinux.org/index.php/KVM
 https://wiki.archlinux.org/index.php/QEMU
 ```
