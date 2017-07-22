@@ -80,13 +80,16 @@ mv ./polybar/redshift.sh ~/.config/polybar/
 mv ./polybar/tempcores.sh ~/.config/polybar
 mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
+mv ./i3/scripts ~/.config/i3 
 mv .Xresources ~
 mv ./zsh/.zshrc ~/.zshrc.bak
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/dunstrc
 
 #copy background image
-mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures
+mkdir ~/Pictures/Backgrounds
+mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/Backgrounds
+mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/Backgrounds
 
 #install vim
 sudo pacman -S gvim  --noconfirm
@@ -114,7 +117,7 @@ cd ~
 sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
 
 #install tmux
-sudo pacman -S tmux xsel --noconfirm # xsel is for x copy support
+sudo pacman -S tmux xclip xsel --noconfirm
 pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
