@@ -18,11 +18,11 @@ sudo apt-add-repository ppa:numix/ppa -y
 sudo apt update
 sudo apt-get install numix-folders numix-icon-theme numix-icon-theme-square -y
 
-#backup .Xresources 
-sudo cp ~/.Xresources ~/.Xresources.bak 
+#backup .Xresources
+sudo cp ~/.Xresources ~/.Xresources.bak
 
 #install polybar
-sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang -y
+sudo apt install build-essential cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang -y
 cd /tmp
 git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
 mkdir polybar/build
@@ -56,10 +56,7 @@ git clone https://github.com/BurningSmile/dotfiles.git
 #install configs
 cd ~/dotfiles/
 mkdir ~/.config/polybar/
-mv ./polybar/config ~/.config/polybar/
-mv ./polybar/launch.sh ~/.config/polybar/
-mv ./polybar/redshift.sh ~/.config/polybar/
-mv ./polybar/tempcores.sh ~/.config/polybar
+mv ./polybar/* ~/.config/polybar/
 mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
 mv .Xresources ~
@@ -68,7 +65,40 @@ mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/dunstrc
 
 #copy background image
-mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures
+mkdir ~/Pictures/backgrounds
+mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/backgrounds
+mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
+
+#install vim [Techinally gvim but i still use it as terminal vim. Used to get yank to also yank to system clipboard]
+sudo apt install vim-gnome -y
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cd ~/dotfiles/vim
+mkdir ~/.vim/
+cp -r .vim/. ~/.vim/
+mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
+mv .vimrc ~
+cd ~
+
+#install vim plugins
+vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
+
+#install you-complete-me for vim auto completion.
+sudo apt install cmake clang python python3 -y
+mkdir /tmp/ycm_build
+cd /tmp/ycm_build
+cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
+cmake --build . --target ycm_core --config Release
+cd ~
+
+#Install nodejs for vim instant markdown
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt install nodejs -y
+
+#Install vim-instant-markdown
+sudo apt install xdg-utils curl -y
+sudo npm -g install instant-markdown-d
 
 #install powerline
 sudo apt install python-pip powerline fonts-powerline -y
@@ -81,6 +111,9 @@ mv .tmux.conf ~
 mv ~/dotfiles/tmux/.tmux ~
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
+
+#install theme [This works for 16.10 and debian 9 and newer. For older versions refer to the arc theme documentation.]
+sudo apt install arc-theme -y
 
 #install htop
 sudo apt install htop -y
@@ -121,43 +154,16 @@ mv ~/dotfiles/cava/config ~/.config/cava
 #setup urxvt
 sudo apt install rxvt-unicode-256color -y
 
-#install vim [Techinally gvim but i still use it as terminal vim. Used to get yank to also yank to system clipboard]
-sudo apt install vim-gnome -y
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-cd ~/dotfiles/vim
-mkdir ~/.vim/
-cp -r .vim/. ~/.vim/
-mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
-mv .vimrc ~
-cd ~
-
-#install vim plugins
-vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
-
-#install you-complete-me for vim auto completion.
-sudo apt install cmake clang python python3 -y
-mkdir /tmp/ycm_build
-cd /tmp/ycm_build
-cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
-cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
-cmake --build . --target ycm_core --config Release
-cd ~
-
-#install theme [This works for 16.10 and debian 9 and newer. For older versions refer to the arc theme documentation.]
-sudo apt install arc-theme -y
-
 #install the fuck for fixing yoru last command if you typed it wrong
 sudo apt install thefuck -y
 
 #install zshell
 sudo apt install  zsh -y
 
-#Cleanup
+#cleanup
 cd ~
-rm -rf dotfiles/ 
+rm -rf dotfiles/
 sudo apt autoremove -y
 
 #install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-

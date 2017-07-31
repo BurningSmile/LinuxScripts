@@ -74,22 +74,19 @@ git clone https://github.com/BurningSmile/dotfiles.git
 #install configs
 cd ~/dotfiles/
 mkdir ~/.config/polybar/
-mv ./polybar/config ~/.config/polybar/
-mv ./polybar/launch.sh ~/.config/polybar/
-mv ./polybar/redshift.sh ~/.config/polybar/
-mv ./polybar/tempcores.sh ~/.config/polybar
+mv ./polybar/* ~/.config/polybar/
 mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
-mv ./i3/scripts ~/.config/i3 
+mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
 mv ./zsh/.zshrc ~/.zshrc.bak
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/dunstrc
 
 #copy background image
-mkdir ~/Pictures/Backgrounds
-mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/Backgrounds
-mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/Backgrounds
+mkdir ~/Pictures/backgrounds
+mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/backgrounds
+mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 #install vim
 sudo pacman -S gvim  --noconfirm
@@ -112,6 +109,10 @@ cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
 cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
 cmake --build . --target ycm_core --config Release
 cd ~
+
+#Install vim-instant-markdown
+sudo pacman -S nodejs xdg-utils curl --noconfirm
+sudo npm -g install instant-markdown-d
 
 #install powerline
 sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
