@@ -82,7 +82,7 @@ cd ~
 vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
 
 #install you-complete-me for vim auto completion.
-sudo apt install cmake clang python python3 -y
+sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git -y
 mkdir /tmp/ycm_build
 cd /tmp/ycm_build
 cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
