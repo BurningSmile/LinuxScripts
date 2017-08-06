@@ -89,7 +89,7 @@ mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/backgrounds
 mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 #install vim
-sudo pacman -S gvim  --noconfirm
+sudo pacman -S --needed  gvim  --noconfirm
 pacaur -S vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
@@ -102,7 +102,7 @@ cd ~
 vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
 
 #install you-complete-me for vim auto completion.
-sudo pacman -S cmake clang python python3 --noconfirm
+sudo pacman -S --needed cmake clang python python3 --noconfirm
 mkdir /tmp/ycm_build
 cd /tmp/ycm_build
 cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
@@ -111,14 +111,14 @@ cmake --build . --target ycm_core --config Release
 cd ~
 
 #Install vim-instant-markdown
-sudo pacman -S nodejs xdg-utils curl --noconfirm
+sudo pacman -S --needed nodejs xdg-utils curl --noconfirm
 sudo npm -g install instant-markdown-d
 
 #install powerline
-sudo pacman -S powerline powerline-fonts powerline-vim --noconfirm
+sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 #install tmux
-sudo pacman -S tmux xclip xsel --noconfirm
+sudo pacman -S --needed tmux xclip xsel --noconfirm
 pacaur -S tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
@@ -128,7 +128,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
 
 #install theme
-sudo pacman -S arc-gtk-theme --noconfirm
+sudo pacman -S --needed arc-gtk-theme --noconfirm
 
 #install htop
 sudo pacman -S htop --noconfirm
