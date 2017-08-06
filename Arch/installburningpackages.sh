@@ -39,7 +39,7 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 sudo pacman -S --needed compton dunst feh i3 jsoncpp libmpdclient lxappearance rofi unzip --noconfirm
 
 #install polybar from AUR
-pacaur -Sa polybar --noconfirm --noedit
+pacaur -Sa polybar-git --noconfirm --noedit
 
 #install fonts for system
 mkdir ~/.fonts
