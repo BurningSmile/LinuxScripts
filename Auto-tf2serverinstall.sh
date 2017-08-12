@@ -1,5 +1,5 @@
 #!/bin/bash
-#Purpose - This is a script to automate the process of installing a tf2server stack on a clean ubuntu 16.04.2 LTS server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
+#Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
 #Written on 06-05-2017
 #Written by Burning-Smile
 #last modified 06-12-2017
@@ -12,15 +12,17 @@ SOURCEMODFILENAME='sourcemod-1.8.0-git6005-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
 STEAMUSERNAME='PUT-Steam-USERNAME-HERE'
 
+#install sudo incase its not installed.
+apt install sudo
 #Get sudo rights just in case
 sudo -v
 
 #Update the server
-apt update
-apt upgrade -y
-apt dist-upgrade -y
-apt autoremove -y
-apt clean
+sudo apt update
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt autoremove -y
+sudo apt clean
 
 #Turn off auto updates
 sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/apt/apt.conf.d/10periodic
