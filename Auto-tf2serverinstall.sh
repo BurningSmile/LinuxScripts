@@ -28,7 +28,7 @@ sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/a
 #Install dependices for the tf2server instance
 sudo dpkg --add-architecture i386; sudo apt-get update;sudo apt-get install binutils mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 -y
 
-useradd -m --password default tf2server
+useradd -m --password default -s /bin/bash tf2server
 passwd tf2server
 
 su - tf2server -c 'wget -N --no-check-certificate https://gameservermanagers.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'

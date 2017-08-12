@@ -36,7 +36,7 @@ pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 #install required packages from main Repos
-sudo pacman -S --needed compton dunst feh i3 jsoncpp libmpdclient lxappearance rofi unzip --noconfirm
+sudo pacman -S --needed compton dunst feh i3 jsoncpp libmpdclient lxappearance rofi unzip xautolock --noconfirm
 
 #install polybar from AUR
 pacaur -Sa polybar-git --noconfirm --noedit
@@ -60,7 +60,7 @@ cp fontawesome-webfont.ttf ~/.fonts
 fc-cache -f -v
 
 #install i3-lock-fancy
-pacaur -S i3lock-fancy-git --noconfirm --noedit
+pacaur -Sa i3lock-fancy-git --noconfirm --noedit
 cd /tmp/
 git clone https://github.com/meskarune/i3lock-fancy.git
 cd i3lock-fancy
@@ -90,7 +90,7 @@ mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 #install vim
 sudo pacman -S --needed  gvim  --noconfirm
-pacaur -S vim-plug-git --noconfirm --noedit
+pacaur -Sa vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
 cp -r .vim/. ~/.vim/
@@ -119,7 +119,7 @@ sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 #install tmux
 sudo pacman -S --needed tmux xclip xsel --noconfirm
-pacaur -S tmux-bash-completition --noconfirm --noedit
+pacaur -Sa tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
@@ -155,14 +155,14 @@ mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # setup Cava
-pacaur -S cava --noedit --noconfirm
+pacaur -Sa cava --noedit --noconfirm
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
 
 #setup urxvt
 sudo pacman -S rxvt-unicode --noconfirm
-pacaur -S urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
+pacaur -Sa urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
 #remove LinuxConfigs folder
 cd ~
