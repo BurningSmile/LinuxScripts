@@ -1,19 +1,20 @@
 #!/bin/bash
-#Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
+#Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
 #Written on 06-05-2017
 #Written by Burning-Smile
-#last modified 06-12-2017
+#last modified 08-12-2017
 
 #Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
-METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git957-linux.tar.gz'
-METAMODFILENAME='mmsource-1.10.7-git957-linux.tar.gz'
-SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6005-linux.tar.gz'
-SOURCEMODFILENAME='sourcemod-1.8.0-git6005-linux.tar.gz'
+METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git959-linux.tar.gz'
+METAMODFILENAME='mmsource-1.10.7-git959-linux.tar.gz'
+SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.9/sourcemod-1.9.0-git6132-linux.tar.gz'
+SOURCEMODFILENAME='https://sm.alliedmods.net/smdrop/1.9/sourcemod-1.9.0-git6132-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
 STEAMUSERNAME='PUT-Steam-USERNAME-HERE'
 
-#install sudo incase its not installed.
+#Install sudo incase its not installed.
 apt install sudo
+
 #Get sudo rights just in case
 sudo -v
 
@@ -42,16 +43,17 @@ su - tf2server -c 'vim /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
 su - tf2server -c '/home/tf2server/tf2server start'
 
 # Allow 27015 and 27020 through the firewall
+sudo apt install ufw
 ufw allow 27015
 ufw allow 27020
 
 #Setup web server
-apt install apache2 -y
+sudo apt install apache2 -y
 mkdir -p /var/www/html/fastdl/tf2/
 cd /var/www/html/fastdl/tf2/
 ln -s /home/tf2server/serverfiles/tf/maps maps
-systemctl start apache2.service
-systemctl enable apache2.service 
+sudo systemctl start apache2.service
+sudo systemctl enable apache2.service 
 mv /var/www/html/index.html /var/www/html/index.html.bak
 
 #Setup metamod and sourcemod
@@ -82,7 +84,7 @@ EOF
 
 chmod +x /home/tf2server/steamid.sh
 su - tf2server -c '/home/tf2server/steamid.sh'
-su - tf2server -c 'rm /home/tf2server/steamid.sh'
+su - tf2server -c 'rm -f /home/tf2server/steamid.sh'
 
 su - tf2server -c '/home/tf2server/tf2server restart'
 
