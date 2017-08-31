@@ -81,7 +81,7 @@ mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
 mv ./zsh/.zshrc ~/.zshrc.bak
 mkdir ~/.config/dunst
-mv ./dunst/dunstrc ~/dunstrc
+mv ./dunst/dunstrc ~/.config/dunst/dunstrc
 
 #copy background image
 mkdir ~/Pictures/backgrounds
