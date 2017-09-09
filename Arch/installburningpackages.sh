@@ -94,7 +94,7 @@ pacaur -Sa vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
 cp -r .vim/. ~/.vim/
-mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
+mv ~/.vimrc ~/.vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~
 
