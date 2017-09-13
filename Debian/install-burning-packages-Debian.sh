@@ -107,6 +107,7 @@ cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
 mv ~/dotfiles/tmux/.tmux ~
+mv ~/dotfiles/tmux/.tmux-ssh.conf ~
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
 
