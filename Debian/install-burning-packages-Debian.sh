@@ -73,7 +73,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cd ~/dotfiles/vim
 mkdir ~/.vim/
-cp -r .vim/. ~/.vim/
+cp -r ./.vim/ultisnips ~/.vim/
 mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
 mv .vimrc ~
 cd ~

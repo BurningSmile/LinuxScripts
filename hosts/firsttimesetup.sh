@@ -1,8 +1,8 @@
 #!/bin/bash
-mkdir ~/.scripts
-cd ~/.scripts
+mkdir ~/scripts
+cd ~/scripts
 git clone --depth 2 https://github.com/StevenBlack/hosts.git
-cd ~/.scripts/hosts
+cd ~/scripts/hosts
 
 cat <<EOT >> myhosts
 

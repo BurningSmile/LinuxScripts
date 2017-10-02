@@ -93,9 +93,9 @@ sudo pacman -S --needed  gvim  --noconfirm
 pacaur -Sa vim-plug-git --noconfirm --noedit
 cd ~/dotfiles/vim
 mkdir ~/.vim/
-cp -r .vim/. ~/.vim/
 mv ~/.vimrc ~/.vimrc.bak # Backup vimrc if present
 mv .vimrc ~
+cp -r ./.vim/ultisnips ~/.vim/
 cd ~
 
 #install vim plugins
@@ -111,7 +111,7 @@ cmake --build . --target ycm_core --config Release
 cd ~
 
 #Install vim-instant-markdown
-sudo pacman -S --needed nodejs xdg-utils curl --noconfirm
+sudo pacman -S --needed nodejs npm xdg-utils curl --noconfirm
 sudo npm -g install instant-markdown-d
 
 #install powerline
