@@ -59,13 +59,11 @@ mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
 mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
-mv ./zsh/.zshrc ~/.zshrc.bak
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/.config/dunst/dunstrc
 
 # Copy background image
 mkdir ~/Pictures/backgrounds
-mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/backgrounds
 mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install Vim
@@ -152,16 +150,17 @@ mv ~/dotfiles/cava/config ~/.config/cava
 # Setup Urxvt
 sudo apt install rxvt-unicode-256color -y
 
-# Install the fuck for fixing yoru last command if you typed it wrong
+# Install the fuck for fixing your last command if you typed it wrong
 sudo apt install thefuck -y
 
 # Install zshell
 sudo apt install  zsh -y
 
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
+mv ~/dotfiles/zsh/.zshrc ~/.zshrc
+
 # Cleanup
 cd ~
 rm -rf dotfiles/
 sudo apt autoremove -y
-
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch

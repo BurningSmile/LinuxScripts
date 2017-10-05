@@ -79,13 +79,11 @@ mkdir ~/.config/i3
 mv ./i3/config ~/.config/i3/
 mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
-mv ./zsh/.zshrc ~/.zshrc.bak
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/.config/dunst/dunstrc
 
 # Copy background image
 mkdir ~/Pictures/backgrounds
-mv ~/dotfiles/i3/Background/Mountins-Wallpaper.jpg ~/Pictures/backgrounds
 mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install vim
@@ -165,15 +163,17 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo pacman -S rxvt-unicode --noconfirm
 pacaur -Sa urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
-# Remove LinuxConfigs folder
-cd ~
-rm -rf dotfiles/
-
-# Install the Fuck
+# Install the fuck for fixing your last command if you typed it wrong
 sudo pacman -S thefuck --noconfirm
 
 # Install zshell
-sudo pacman -S zsh --noconfirm
+sudo apt install  zsh -y
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
+mv ~/dotfiles/zsh/.zshrc ~/.zshrc
+
+# Cleanup
+cd ~
+rm -rf dotfiles/
+sudo apt autoremove -y
