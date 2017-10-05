@@ -70,8 +70,7 @@ mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install Vim
 sudo apt install vim-gnome -y
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cd ~/dotfiles/vim
 mkdir ~/.vim/
 mv ~/vimrc ~/vimrc.bak # Backup vimrc if present
