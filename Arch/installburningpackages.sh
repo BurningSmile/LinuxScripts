@@ -81,6 +81,8 @@ mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/.config/dunst/dunstrc
+mkdir ~/.config/rofi
+mv ./rofi/* ~/.config/rofi/
 
 # Copy background image
 mkdir ~/Pictures/backgrounds

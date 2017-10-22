@@ -16,7 +16,7 @@ sudo apt install curl compton dunst feh i3 libjsoncpp1 libmpdclient2 lxappearanc
 # Install numix icons
 sudo apt-add-repository ppa:numix/ppa -y
 sudo apt update
-sudo apt-get install numix-folders numix-icon-theme numix-icon-theme-square -y
+sudo apt-get install numix-folders numix-icon-theme numix-icon-theme-circle numix-icon-theme-square -y
 
 # Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
@@ -63,6 +63,8 @@ mv ./i3/scripts ~/.config/i3
 mv .Xresources ~
 mkdir ~/.config/dunst
 mv ./dunst/dunstrc ~/.config/dunst/dunstrc
+mkdir ~/.config/rofi
+mv ./rofi/* ~/.config/rofi/
 
 # Copy background image
 mkdir ~/Pictures/backgrounds
