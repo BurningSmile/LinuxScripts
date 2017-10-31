@@ -30,7 +30,7 @@ sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/a
 sed 's/"1"/"0"/' /etc/apt/apt.conf.d/20auto-upgrades > tmp-file && mv tmp-file /etc/apt/apt.conf.d/20auto-upgrades
 
 # Install dependices for the tf2server instance
-udo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386
+sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386 -y
 
 # Add user account
 useradd -m --password default -s /bin/bash tf2server
