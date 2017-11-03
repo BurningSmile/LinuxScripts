@@ -96,7 +96,7 @@ sudo apt install nodejs -y
 
 # Install vim-instant-markdown
 sudo apt install xdg-utils curl -y
-sudo npm -g install instant-markdown-d
+sudo npm install -g livedown
 
 # Install powerline
 sudo apt install python-pip powerline fonts-powerline -y

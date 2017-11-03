@@ -112,7 +112,7 @@ cd ~
 
 # Install vim-instant-markdown
 sudo pacman -S --needed nodejs npm xdg-utils curl --noconfirm
-sudo npm -g install instant-markdown-d
+sudo npm install -g livedown
 
 # Install powerline
 sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
