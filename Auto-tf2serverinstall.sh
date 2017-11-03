@@ -63,11 +63,11 @@ mv /var/www/html/index.html /var/www/html/index.html.bak
 cat <<EOF>> /home/tf2server/source-metamodinstall.sh
 cd /home/tf2server/serverfiles/tf
 wget $METAMODURL
-tar -xvf $METAMODFILENAME
+tar -xf $METAMODFILENAME
 rm $METAMODFILENAME
 
 wget $SOURCEMODURL
-tar -xvf $SOURCEMODFILENAME
+tar -xf $SOURCEMODFILENAME
 rm $SOURCEMODFILENAME
 EOF
 
