@@ -11,7 +11,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 # Install i3 and other packages
-sudo apt install curl compton dunst feh i3 libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip -y
+sudo apt install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip -y
 
 # Install numix icons
 sudo apt install numix-icon-theme
@@ -90,11 +90,11 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteM
 cmake --build . --target ycm_core --config Release
 cd ~
 
-# Install nodejs for vim instant markdown
+# Install nodejs for vim livedown
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt install nodejs -y
 
-# Install vim-instant-markdown
+# Install vim-livedown
 sudo apt install xdg-utils curl -y
 sudo npm install -g livedown
 

@@ -36,7 +36,7 @@ pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install required packages from main Repos
-sudo pacman -S --needed compton dunst feh i3 jsoncpp libmpdclient lxappearance rofi unzip xautolock --noconfirm
+sudo pacman -S --needed compton dunst feh i3 i3lock jsoncpp libmpdclient lxappearance rofi unzip xautolock --noconfirm
 
 # Install polybar from AUR
 pacaur -Sa polybar-git --noconfirm --noedit
@@ -58,14 +58,6 @@ cp fontawesome-webfont.ttf ~/.fonts
 
 # Reload font cache
 fc-cache -f -v
-
-# Install i3-lock-fancy
-pacaur -Sa i3lock-fancy-git --noconfirm --noedit
-cd /tmp/
-git clone https://github.com/meskarune/i3lock-fancy.git
-cd i3lock-fancy
-sudo mv icons/ /usr/local/bin
-sudo mv lock /usr/local/bin
 
 # Download config files from GitHub
 cd ~
