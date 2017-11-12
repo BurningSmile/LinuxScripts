@@ -4,7 +4,7 @@
 # 2) Create a temporrary snapshot for the domain to write to while backing up the backing image.
 # 3) live pivot the domain to the snapshot. 
 # 4) rsync the original disk image to the backup location 
-# 5) Block pull changes from the snapshot into the backing image 
+# 5) Blockcommit changes from the snapshot into the backing image 
 # 6) Live pivot the domain to the backing image 
 # 7) Delete the snapshot.
 # USAGE: Run the script
@@ -24,8 +24,6 @@ VM_FOLDER="/vms"
 # Create directory structure
 mkdir -p $BACKUPPATH/xml
 
-# Dump xml files to backup location
-
 # list running domains
 list_running_domains() {
     virsh list --all | grep running | awk '{print $2}'
@@ -36,8 +34,7 @@ list_shutoff_domains() {
     virsh list --all | grep shut | awk '{print $2}'
 }
 
-echo "Backing up domains xml files"
-
+# Dump xml files to backup location
 list_running_domains | while read DOMAIN; do
   virsh dumpxml $DOMAIN > $BACKUPPATH/xml/$DOMAIN.xml
 done
@@ -51,7 +48,6 @@ list_running_domains | while read DOMAIN; do
         mkdir -p `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
 done
 
-# Create domain snapshot directories
 list_shutoff_domains | while read DOMAIN; do
         mkdir -p `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
 done
