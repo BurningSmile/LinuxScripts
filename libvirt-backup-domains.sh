@@ -13,6 +13,7 @@
 # Variables 
 # ------------------------------------------
 BACKUPPATH='/backup/vms'
+BACKUPPATHXML='/backup/vms-xml'
 TIMESTAMP=`date +%s`
 SNAPSHOT_NAME=$TIMESTAMP
 VM_FOLDER="/vms"
@@ -22,7 +23,8 @@ VM_FOLDER="/vms"
 # ------------------------------------------
 
 # Create directory structure
-mkdir -p $BACKUPPATH/xml
+mkdir -p $BACKUPPATH
+mkdir -p $BACKUPPATHXML
 
 # list running domains
 list_running_domains() {
@@ -36,11 +38,11 @@ list_shutoff_domains() {
 
 # Dump xml files to backup location
 list_running_domains | while read DOMAIN; do
-  virsh dumpxml $DOMAIN > $BACKUPPATH/xml/$DOMAIN.xml
+  virsh dumpxml $DOMAIN > $BACKUPPATHXML/$DOMAIN.xml
 done
 
 list_shutoff_domains | while read DOMAIN; do
-  virsh dumpxml $DOMAIN > $BACKUPPATH/xml/$DOMAIN.xml
+  virsh dumpxml $DOMAIN > $BACKUPPATHXML/$DOMAIN.xml
 done
 
 # Create domain snapshot directories
@@ -75,8 +77,8 @@ list_shutoff_domains | while read DOMAIN; do
     --atomic
 done 
 
-# Rsync the disk images to the back location
-rsync -avP --sparse $VM_FOLDER/ $BACKUPPATH 
+# Rsync the disk images to the backup location
+rsync -avP --sparse --delete --exclude='*/snapshots' $VM_FOLDER/ $BACKUPPATH 
 
 # Blockpull snapshots to domains backing images
 list_running_domains | while read DOMAIN; do
