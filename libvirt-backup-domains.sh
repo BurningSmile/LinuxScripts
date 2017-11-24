@@ -78,7 +78,7 @@ list_shutoff_domains | while read DOMAIN; do
 done 
 
 # Rsync the disk images to the backup location
-rsync -avP --sparse --delete --exclude='*/snapshots' $VM_FOLDER/ $BACKUPPATH 
+rsync -avP --sparse --delete --exclude=*/snapshots/$TIMESTAMP $VM_FOLDER/ $BACKUPPATH 
 
 # Blockpull snapshots to domains backing images
 list_running_domains | while read DOMAIN; do
