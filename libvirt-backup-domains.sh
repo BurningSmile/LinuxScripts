@@ -50,10 +50,6 @@ list_running_domains | while read DOMAIN; do
         mkdir -p `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
 done
 
-list_shutoff_domains | while read DOMAIN; do
-        mkdir -p `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
-done
-
 # Create snapshots
 
 MEM_FILE="snapshots/`echo $TIMESTAMP`/mem.qcow2"
@@ -68,30 +64,15 @@ list_running_domains | while read DOMAIN; do
     --atomic
 done
 
-# Snapshot shutdown domains
-list_shutoff_domains | while read DOMAIN; do
-    virsh snapshot-create-as \
-    --domain $DOMAIN $SNAPSHOT_NAME \
-    --diskspec vda,file=$VM_FOLDER/$DOMAIN/$DISK_FILE,snapshot=external \
-    --disk-only \
-    --atomic
-done 
-
 # Rsync the disk images to the backup location
-rsync -avP --sparse --delete --exclude=*/snapshots/$TIMESTAMP $VM_FOLDER/ $BACKUPPATH 
+rsync -av --sparse --delete --exclude=*/snapshots/$TIMESTAMP $VM_FOLDER/ $BACKUPPATH 
 
 # Blockpull snapshots to domains backing images
 list_running_domains | while read DOMAIN; do
     virsh blockcommit $DOMAIN vda --active --verbose --pivot
 done
-list_shutoff_domains | while read DOMAIN; do
-    virsh blockcommit $DOMAIN vda --active --verbose --pivot
-done
 
 # Delete temp snapshots.
 list_running_domains | while read DOMAIN; do
-        rm -rf `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
-done
-list_shutoff_domains | while read DOMAIN; do
         rm -rf `echo $VM_FOLDER`/$DOMAIN/snapshots/`echo $TIMESTAMP`
 done
