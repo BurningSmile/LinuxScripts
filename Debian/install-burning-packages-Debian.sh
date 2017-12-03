@@ -11,10 +11,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 # Install i3 and other packages
-sudo apt install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip -y
-
-# Install numix icons
-sudo apt install numix-icon-theme
+sudo apt install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance numix-icon-theme rofi git wget unzip -y
 
 # Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
