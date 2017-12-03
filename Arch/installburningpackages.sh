@@ -102,7 +102,7 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteM
 cmake --build . --target ycm_core --config Release
 cd ~
 
-# Install vim-instant-markdown
+# Install vim-livedown
 sudo pacman -S --needed nodejs npm xdg-utils curl --noconfirm
 sudo npm install -g livedown
 
@@ -110,7 +110,7 @@ sudo npm install -g livedown
 sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 # Install tmux
-sudo pacman -S --needed tmux xclip xsel --noconfirm
+sudo pacman -S --needed tmux xsel --noconfirm
 pacaur -Sa tmux-bash-completition --noconfirm --noedit
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
@@ -153,7 +153,7 @@ mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
 
-# Setup Rrxvt
+# Setup urxvt
 sudo pacman -S rxvt-unicode --noconfirm
 pacaur -Sa urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
 
