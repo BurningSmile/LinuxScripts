@@ -170,4 +170,3 @@ mv ~/dotfiles/zsh/.zshrc ~/.zshrc
 # Cleanup
 cd ~
 rm -rf dotfiles/
-sudo apt autoremove -y
