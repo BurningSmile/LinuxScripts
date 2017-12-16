@@ -9,28 +9,20 @@ sudo pacman -Syu --noconfirm
 # Install git and wget if necessary
 sudo pacman -S --needed git wget --noconfirm
 
-# Install pacaur
-sudo pacman -S --needed base-devel --noconfirm
+# Install aura
+sudo pacman -S --needed base-devel gmp pcre --noconfirm
 
 cd /tmp/
-sudo pacman -S --needed curl openssl yajl perl expac --noconfirm
-gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
-tar -xzf cower.tar.gz
-cd cower
-makepkg -si --noconfirm
-
-cd /tmp/
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
-tar -xzf pacaur.tar.gz
-cd pacaur
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/aura-bin.tar.gz
+tar -xzf aura-bin.tar.gz
+cd aura-bin
 makepkg -si --noconfirm
 
 # Update aur packages
-pacaur -Syua --noconfirm --noedit
+sudo aura -Aau --noconfirm 
 
 # Install numix-curser-theme
-pacaur -Sa numix-cursor-theme-git --noconfirm --noedit
+sudo aura -Aa numix-cursor-theme-git --noconfirm
 
 # Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
@@ -39,7 +31,7 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 sudo pacman -S --needed compton dunst feh i3 i3lock jsoncpp libmpdclient lxappearance rofi unzip xautolock --noconfirm
 
 # Install polybar from AUR
-pacaur -Sa polybar-git --noconfirm --noedit
+sudo aura -Aa polybar-git --noconfirm
 
 # Install fonts for system
 mkdir ~/.fonts
@@ -82,7 +74,7 @@ mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install vim
 sudo pacman -S --needed  gvim  --noconfirm
-pacaur -Sa vim-plug-git --noconfirm --noedit
+sudo aura -Aa vim-plug-git --noconfirm
 cd ~/dotfiles/vim
 mkdir ~/.vim/
 mv ~/.vimrc ~/.vimrc.bak # Backup vimrc if present
@@ -111,7 +103,7 @@ sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 # Install tmux
 sudo pacman -S --needed tmux xsel --noconfirm
-pacaur -Sa tmux-bash-completition --noconfirm --noedit
+sudo aura -Aa tmux-bash-completition --noconfirm 
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
@@ -148,14 +140,14 @@ mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # Setup Cava
-pacaur -Sa cava --noedit --noconfirm
+sudo aura -Aa cava --noconfirm
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
 
 # Setup urxvt
 sudo pacman -S rxvt-unicode --noconfirm
-pacaur -Sa urxvt-vtwheel urxvt-fullscreen --noedit --noconfirm
+sudo aura -Aa urxvt-vtwheel urxvt-fullscreen --noconfirm
 
 # Install the fuck for fixing your last command if you typed it wrong
 sudo pacman -S thefuck --noconfirm
