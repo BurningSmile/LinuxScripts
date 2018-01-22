@@ -1,10 +1,7 @@
 #!/bin/bash
 #Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
-#Written on 06-05-2017
-#Written by Burning-Smile
-#last modified 08-12-2017
 
-#Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
+# Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
 METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git959-linux.tar.gz'
 METAMODFILENAME='mmsource-1.10.7-git959-linux.tar.gz'
 SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6035-linux.tar.gz'
@@ -12,18 +9,18 @@ SOURCEMODFILENAME='sourcemod-1.8.0-git6035-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
 STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
 
-#Install sudo incase its not installed.
-apt install sudo
+# Install sudo incase its not installed.
+apt -y install sudo
 
-#Get sudo rights just in case
+# Get sudo rights just in case
 sudo -v
 
-#Update the server
-sudo apt update
-sudo apt -y upgrade
-sudo apt -y dist-upgrade
-sudo apt -y autoremove
-sudo apt autoclean
+# Update the server
+sudo apt-ger update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
+sudo apt-get -y autoremove
+sudo apt-get autoclean
 
 # Turn off ubuntu auto updates
 sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/apt/apt.conf.d/10periodic
@@ -46,7 +43,7 @@ su - tf2server -c 'vim /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
 su - tf2server -c '/home/tf2server/tf2server start'
 
 # Configure firewall
-sudo apt install -y iptables iptables-persistent
+sudo apt-get install -y iptables iptables-persistent
 
 # Wipe the v4 rules
 sudo iptables -P INPUT ACCEPT
@@ -83,7 +80,7 @@ iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 
 # Setup web server
-sudo apt install -y apache2
+sudo apt-get install -y apache2
 mkdir -p /var/www/html/fastdl/tf2/
 cd /var/www/html/fastdl/tf2/
 ln -s /home/tf2server/serverfiles/tf/maps maps
@@ -121,14 +118,12 @@ chmod +x /home/tf2server/steamid.sh
 su - tf2server -c '/home/tf2server/steamid.sh'
 su - tf2server -c 'rm -f /home/tf2server/steamid.sh'
 
+# Restart the server to load sourcemod install.
 su - tf2server -c '/home/tf2server/tf2server restart'
 
-#CFG.tf
-#This needs to be worked on, placeholder until I can find a way to automate this
-
 # Add cronjobs
-su - tf2server -c 'crontab -l | { cat; echo "0 0 * * * /home/tf2server/tf2server restart"; } | crontab -'
-su - tf2server -c 'crontab -l | { cat; echo "@reboot /home/tf2server/tf2server start"; } | crontab -'
+echo "@reboot         tf2server /home/tf2server/tf2server start" >> /etc/crontab
+echo "0 0     * * *   tf2server /home/tf2server/tf2server restart" >> /etc/crontab
 
-#Set a restart of the server for midnight incase it is not done manually.
+# Set a restart of the server for midnight incase it is not done manually.
 sudo shutdown -r -t 0:00
