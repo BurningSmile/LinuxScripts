@@ -11,7 +11,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 # Install i3 and other packages
-sudo apt install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip -y
+sudo apt-get -y install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip xautolock
 
 # Install numix icons
 sudo apt-add-repository ppa:numix/ppa -y
