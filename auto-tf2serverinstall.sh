@@ -9,14 +9,20 @@ SOURCEMODFILENAME='sourcemod-1.8.0-git6035-linux.tar.gz'
 STEAMID='PUT-STEAM-ID-HERE'
 STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
 
+# Check if root
+if [ "$EUID" -ne 0 ]
+  then echo "Run as root or use sudo."
+  exit 1
+fi
+
 # Install sudo incase its not installed.
-apt -y install sudo
+apt-get -y install sudo
 
 # Get sudo rights just in case
 sudo -v
 
 # Update the server
-sudo apt-ger update
+sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
