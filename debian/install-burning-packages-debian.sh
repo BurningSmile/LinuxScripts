@@ -87,14 +87,6 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteM
 cmake --build . --target ycm_core --config Release
 cd ~
 
-# Install nodejs for vim livedown
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt install nodejs -y
-
-# Install vim-livedown
-sudo apt install xdg-utils curl -y
-sudo npm install -g livedown
-
 # Install powerline
 sudo apt install python-pip powerline fonts-powerline -y
 
