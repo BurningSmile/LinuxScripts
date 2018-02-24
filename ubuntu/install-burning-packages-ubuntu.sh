@@ -4,25 +4,25 @@
 sudo -v
 
 # Update system
-sudo apt update
-sudo apt upgrade -y
-sudo apt dist-upgrade -y
-sudo apt autoremove -y
-sudo apt clean
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
+sudo apt-get -y autoremove
+sudo apt-get autoclean
 
 # Install i3 and other packages
 sudo apt-get -y install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip xautolock
 
 # Install numix icons
 sudo apt-add-repository ppa:numix/ppa -y
-sudo apt update
-sudo apt-get install numix-folders numix-icon-theme numix-icon-theme-circle numix-icon-theme-square -y
+sudo apt-get update
+sudo apt-get -y install numix-folders numix-icon-theme numix-icon-theme-circle numix-icon-theme-square
 
 # Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install polybar
-sudo apt install build-essential cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang -y
+sudo apt-get -y install build-essential cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang
 cd /tmp
 git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
 mkdir polybar/build
@@ -71,7 +71,7 @@ mkdir ~/Pictures/backgrounds
 mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install Vim
-sudo apt install vim-gnome -y
+sudo apt-get -y install vim-gnome
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cd ~/dotfiles/vim
 mkdir ~/.vim/
@@ -84,7 +84,7 @@ cd ~
 vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
 
 # Install you-complete-me for vim auto completion.
-sudo apt install cmake clang python python3 -y
+sudo apt-get -y install cmake clang python python3
 mkdir /tmp/ycm_build
 cd /tmp/ycm_build
 cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
@@ -93,10 +93,10 @@ cmake --build . --target ycm_core --config Release
 cd ~
 
 # Install powerline
-sudo apt install python-pip powerline fonts-powerline -y
+sudo apt-get -y install python-pip powerline fonts-powerline
 
 # Install tmux
-sudo apt install tmux xsel -y # xsel is for x copy support
+sudo apt-get -y install tmux xsel # xsel is for x copy support
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
@@ -106,10 +106,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
 
 # Install Arc theme [This works for 16.10 and debian 9 and newer. For older versions refer to the arc theme documentation.]
-sudo apt install arc-theme -y
+sudo apt-get -y install arc-theme
 
 # Install htop
-sudo apt install htop -y
+sudo apt-get -y install htop
 mv ~/.config/htop/htoprc ~/.config/htop/htoprc.bak # Backup htoprc if present
 cd ~/dotfiles/htop
 mkdir ~/.config/htop
@@ -117,7 +117,7 @@ mv htoprc ~/.config/htop/
 cd ~
 
 # Setup Mpd and Mpc
-sudo apt install mpd mpc -y
+sudo apt-get -y install mpd mpc
 mkdir -p ~/.config/mpd/
 mkdir -p ~/.mpd/playlists
 cd ~/.mpd/
@@ -126,14 +126,14 @@ mv ~/.config/mpd/mpd.conf ~/.config/mpd/mpd.conf.bak #Backup config if present
 mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
 
 # Setup ncmpcpp
-sudo apt install ncmpcpp -y
+sudo apt-get -y  install ncmpcpp
 mkdir ~/.ncmpcpp/
 mv ~/.ncmpcpp/config ~/.ncmpcpp/config.bak #Backup config if present
 mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # Setup Cava
-sudo apt install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake -y
+sudo apt-get -y  install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake
 cd /tmp
 git clone https://github.com/karlstav/cava.git
 cd cava
@@ -145,13 +145,7 @@ mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
 
 # Setup Urxvt
-sudo apt install rxvt-unicode-256color -y
-
-# Install the fuck for fixing your last command if you typed it wrong
-sudo apt install thefuck -y
-
-# Install zshell
-sudo apt install  zsh -y
+sudo apt-get -y install rxvt-unicode-256color
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch

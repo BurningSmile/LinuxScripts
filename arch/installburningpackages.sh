@@ -145,9 +145,6 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo pacman -S rxvt-unicode --noconfirm
 sudo aura -Aa urxvt-vtwheel urxvt-fullscreen --noconfirm
 
-# Install the fuck for fixing your last command if you typed it wrong
-sudo pacman -S thefuck --noconfirm
-
 # Install zshell
 sudo apt install  zsh -y
 
