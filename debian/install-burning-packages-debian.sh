@@ -95,7 +95,6 @@ sudo apt-get -y install tmux tmux-plugin-manager xsel # xsel is for x copy suppo
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
-mv ~/dotfiles/tmux/.tmux ~
 mv ~/dotfiles/tmux/.tmux-ssh.conf ~
 cd ~
 
@@ -118,6 +117,7 @@ cd ~/.mpd/
 touch database log pid state sticker.sql
 mv ~/.config/mpd/mpd.conf ~/.config/mpd/mpd.conf.bak #Backup config if present
 mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
+sudo systemctl disable mpd.service
 
 # Setup Ncmpcpp
 sudo apt-get -y install ncmpcpp
@@ -142,7 +142,7 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo apt-get -y install rxvt-unicode-256color
 
 # Install zshell
-sudo apt-get install zsh
+sudo apt-get -y install zsh
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
@@ -151,4 +151,4 @@ mv ~/dotfiles/zsh/.zshrc ~/.zshrc
 # Cleanup
 cd ~
 rm -rf dotfiles/
-sudo apt-get autoremove -y
+sudo apt-get -y autoremove

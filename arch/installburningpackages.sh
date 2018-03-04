@@ -19,7 +19,7 @@ cd aura-bin
 makepkg -si --noconfirm
 
 # Update aur packages
-sudo aura -Aau --noconfirm 
+sudo aura -Aau --noconfirm
 
 # Install numix-curser-theme
 sudo aura -Aa numix-cursor-theme-git --noconfirm
@@ -99,11 +99,10 @@ sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 # Install tmux
 sudo pacman -S --needed tmux xsel --noconfirm
-sudo aura -Aa tmux-bash-completition --noconfirm 
+sudo aura -Aa tmux-bash-completition --noconfirm
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~
-mv ~/dotfiles/tmux/.tmux ~
 mv ~/dotfiles/tmux/.tmux-ssh.conf ~
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~
@@ -127,6 +126,7 @@ cd ~/.mpd/
 touch database log pid state sticker.sql
 mv ~/.config/mpd/mpd.conf ~/.config/mpd/mpd.conf.bak #Backup config if present
 mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
+sudo systemctl disable mpd.service
 
 # Setup Ncmpcpp
 sudo pacman -S ncmpcpp --noconfirm
@@ -146,7 +146,7 @@ sudo pacman -S rxvt-unicode --noconfirm
 sudo aura -Aa urxvt-vtwheel urxvt-fullscreen --noconfirm
 
 # Install zshell
-sudo apt install  zsh -y
+sudo pacman -S zsh --noconfirm
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
