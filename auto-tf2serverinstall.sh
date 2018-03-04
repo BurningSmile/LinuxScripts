@@ -2,12 +2,14 @@
 #Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
 
 # Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
-METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git959-linux.tar.gz'
-METAMODFILENAME='mmsource-1.10.7-git959-linux.tar.gz'
-SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6035-linux.tar.gz'
-SOURCEMODFILENAME='sourcemod-1.8.0-git6035-linux.tar.gz'
-STEAMID='PUT-STEAM-ID-HERE'
-STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
+export METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git961-linux.tar.gz'
+export METAMODFILENAME='mmsource-1.10.7-git961-linux.tar.gz'
+export SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6041-linux.tar.gz'
+export SOURCEMODFILENAME='sourcemod-1.8.0-git6041-linux.tar.gz'
+export STEAMID='PUT-STEAM-ID-HERE'
+export STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
+export DEFAULTMAP='pl_upward'
+export PLAYERS='24'
 
 # Check if root
 if [ "$EUID" -ne 0 ]
@@ -42,9 +44,9 @@ passwd tf2server
 # Get the framework script and install the server.
 su - tf2server -c 'wget -N --no-check-certificate https://gameservermanagers.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'
 su - tf2server -c '/home/tf2server/tf2server auto-install'
-su - tf2server -c 'echo 'defaultmap="cp_badlands"' > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
-su - tf2server -c 'echo 'maxplayers="16"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
-su - tf2server -c 'echo 'updateonstart="on"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
+su - tf2server -c "echo "defaultmap=\"$DEFAULTMAP\"" > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
+su - tf2server -c "echo "maxplayers=\"$PLAYERS\"" >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
+su - tf2server -c "echo 'updateonstart="on"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c 'vim /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
 su - tf2server -c '/home/tf2server/tf2server start'
 
