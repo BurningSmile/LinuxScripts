@@ -148,7 +148,7 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo apt-get -y install rxvt-unicode-256color
 
 # Install prezto
-cat << EOF >> /tmp/prezto-install.sh
+cat << 'EOF' >> /tmp/prezto-install.sh
 #!/usr/bin/zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB

@@ -149,7 +149,7 @@ sudo aura -Aa urxvt-vtwheel urxvt-fullscreen --noconfirm
 sudo pacman -S zsh --noconfirm
 
 # Install prezto
-cat << EOF >> /tmp/prezto-install.sh
+cat << 'EOF' >> /tmp/prezto-install.sh
 #!/usr/bin/zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
