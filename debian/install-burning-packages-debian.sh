@@ -126,13 +126,13 @@ mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # Setup Cava
-sudo apt-get -y install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake
+sudo apt-get -y install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool
 cd /tmp
 git clone https://github.com/karlstav/cava.git
 cd cava
 ./autogen.sh
 ./configure
-make install
+sudo make install
 mkdir ~/.config/cava
 mv ~/.config/cava/config ~/.config/cava/config.bak #Backup config if present
 mv ~/dotfiles/cava/config ~/.config/cava
