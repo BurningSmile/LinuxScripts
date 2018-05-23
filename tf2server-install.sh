@@ -123,7 +123,7 @@ sudo ip6tables -t mangle -F
 sudo ip6tables -F
 sudo ip6tables -X
 
-# Confiure the new firewall rules.
+# Confiure ipv4 firewall
 sudo iptables -I INPUT 1 -i lo -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
@@ -134,6 +134,19 @@ sudo iptables -A INPUT -p udp --dport 27015 -m state --state NEW,ESTABLISHED  -j
 sudo iptables -A INPUT -p tcp --dport 27015 -m state --state NEW,ESTABLISHED  -j ACCEPT
 sudo iptables -A INPUT -p udp --dport 27020 -m state --state NEW,ESTABLISHED  -j ACCEPT
 sudo iptables -P INPUT DROP
+
+# Configure ipv6 firewall
+sudo ip6tables -P INPUT DROP
+sudo ip6tables -P FORWARD DROP
+sudo ip6tables -P OUTPUT ACCEPT
+sudo ip6tables -A INPUT -i lo -j ACCEPT
+sudo ip6tables -A INPUT -p tcp --syn -j DROP
+sudo ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+sudo ip6tables -A INPUT -p ipv6-icmp -j ACCEPT
+sudo ip6tables -A INPUT -m state --state NEW -m udp -p udp -s fe80::/10 --dport 546 -j ACCEPT
+sudo ip6tables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+sudo ip6tables -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+sudo ip6tables -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 
 # Save the firewall rules
 iptables-save > /etc/iptables/rules.v4
