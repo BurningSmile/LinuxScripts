@@ -11,9 +11,10 @@ export STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
 export DEFAULTMAP='pl_upward'
 export PLAYERS='24'
 
-# Check if root
+# Check if running with sudo/root privilages
 if [ "$EUID" -ne 0 ]
-  then echo "Run as root or use sudo."
+then
+  echo "Run as root or use sudo."
   exit 1
 fi
 
@@ -29,10 +30,6 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
 sudo apt-get autoclean
-
-# Turn off ubuntu auto updates
-sed 's/"1"/"0"/' /etc/apt/apt.conf.d/10periodic > tmp-file && mv tmp-file /etc/apt/apt.conf.d/10periodic
-sed 's/"1"/"0"/' /etc/apt/apt.conf.d/20auto-upgrades > tmp-file && mv tmp-file /etc/apt/apt.conf.d/20auto-upgrades
 
 # Install dependices for the tf2server instance
 sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386 vim -y
