@@ -1,7 +1,7 @@
 #!/bin/bash
 #Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
 
-# Variables used in script. Only edit the STEAMID and STEAMUSERNAME variable.
+# Variables used in script.
 export METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git961-linux.tar.gz'
 export METAMODFILENAME='mmsource-1.10.7-git961-linux.tar.gz'
 export SOURCEMODURL='https://sm.alliedmods.net/smdrop/1.8/sourcemod-1.8.0-git6041-linux.tar.gz'
@@ -68,11 +68,11 @@ sudo ip6tables -t mangle -F
 sudo ip6tables -F
 sudo ip6tables -X
 
-#  Configure ipv4 packages
+# Confiure ipv4 firewall
 sudo iptables -I INPUT 1 -i lo -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED  --dport 22 -j ACCEPT
-sudo iptables -A INPUT -p icmp --icmp-type echo-request -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED  -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED  -j ACCEPT
 sudo iptables -A INPUT -p udp --dport 27015 -m state --state NEW,ESTABLISHED  -j ACCEPT
