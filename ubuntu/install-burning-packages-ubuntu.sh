@@ -23,7 +23,7 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 # Install polybar
 sudo apt-get -y install build-essential cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang
 cd /tmp
-git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
+git clone --recursive https://github.com/jaagr/polybar
 mkdir polybar/build
 cd polybar/build
 cmake ..
@@ -125,14 +125,14 @@ mv ~/dotfiles/mpd/mpd.conf ~/.config/mpd/
 sudo systemctl disable mpd.service
 
 # Setup ncmpcpp
-sudo apt-get -y  install ncmpcpp
+sudo apt-get -y install ncmpcpp
 mkdir ~/.ncmpcpp/
 mv ~/.ncmpcpp/config ~/.ncmpcpp/config.bak #Backup config if present
 mv ~/dotfiles/ncmpcpp/config ~/.ncmpcpp/
 cd ~
 
 # Setup Cava
-sudo apt-get -y install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool
+sudo apt-get -y install libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake autoconf autogen m4
 cd /tmp
 git clone https://github.com/karlstav/cava.git
 cd cava
@@ -147,6 +147,7 @@ mv ~/dotfiles/cava/config ~/.config/cava
 sudo apt-get -y install rxvt-unicode-256color
 
 # Install prezto
+sudo apt-get -y install zsh
 cat << 'EOF' >> /tmp/prezto-install.sh
 #!/usr/bin/zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
