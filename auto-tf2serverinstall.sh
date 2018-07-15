@@ -39,7 +39,7 @@ useradd -m -s /bin/bash tf2server
 passwd tf2server
 
 # Get the framework script and install the server.
-su - tf2server -c 'wget -N --no-check-certificate https://gameservermanagers.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'
+su - tf2server -c 'wget -N --no-check-certificate https://linuxgsm.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'
 su - tf2server -c '/home/tf2server/tf2server auto-install'
 su - tf2server -c "echo "defaultmap=\"$DEFAULTMAP\"" > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c "echo "maxplayers=\"$PLAYERS\"" >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
