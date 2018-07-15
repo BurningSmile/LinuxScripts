@@ -44,8 +44,6 @@ su - tf2server -c '/home/tf2server/tf2server auto-install'
 su - tf2server -c "echo "defaultmap=\"$DEFAULTMAP\"" > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c "echo "maxplayers=\"$PLAYERS\"" >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c "echo 'updateonstart="on"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
-su - tf2server -c 'vim /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg'
-su - tf2server -c '/home/tf2server/tf2server start'
 
 # Configure firewall
 sudo apt-get install -y iptables iptables-persistent
@@ -136,8 +134,8 @@ chmod +x /home/tf2server/steamid.sh
 su - tf2server -c '/home/tf2server/steamid.sh'
 su - tf2server -c 'rm -f /home/tf2server/steamid.sh'
 
-# Restart the server to load sourcemod install.
-su - tf2server -c '/home/tf2server/tf2server restart'
+# Start the tf2server
+su - tf2server -c '/home/tf2server/tf2server start'
 
 # Add cronjobs
 echo "@reboot         tf2server /home/tf2server/tf2server start" >> /etc/crontab
