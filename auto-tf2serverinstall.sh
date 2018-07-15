@@ -18,8 +18,8 @@ then
   exit 1
 fi
 
-# Install sudo incase its not installed.
-apt-get -y install sudo
+# Check for sudo and install if not found in $path.
+which sudo > /dev/null || apt-get -y install sudo
 
 # Get sudo rights just in case
 sudo -v
