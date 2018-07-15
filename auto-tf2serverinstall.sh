@@ -21,7 +21,7 @@ fi
 # Check for sudo and install if not found in $path.
 which sudo > /dev/null || apt-get -y install sudo
 
-# Get sudo rights just in case
+# Prompt for sudo rights
 sudo -v
 
 # Update the server
@@ -39,13 +39,13 @@ useradd -m -s /bin/bash tf2server
 passwd tf2server
 
 # Get the framework script and install the server.
-su - tf2server -c 'wget -N --no-check-certificate https://linuxgsm.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh tf2server'
+su - tf2server -c 'wget -N --no-check-certificate https://linuxgsm.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && /bin/bash linuxgsm.sh tf2server'
 su - tf2server -c '/home/tf2server/tf2server auto-install'
 su - tf2server -c "echo "defaultmap=\"$DEFAULTMAP\"" > /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c "echo "maxplayers=\"$PLAYERS\"" >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 su - tf2server -c "echo 'updateonstart="on"' >> /home/tf2server/lgsm/config-lgsm/tf2server/tf2server.cfg"
 
-# Configure firewall
+# Install iptables
 sudo apt-get install -y iptables iptables-persistent
 
 # Wipe the v4 rules
@@ -136,5 +136,5 @@ su - tf2server -c '/home/tf2server/tf2server start'
 echo "@reboot         tf2server /home/tf2server/tf2server start" >> /etc/crontab
 echo "0 0     * * *   tf2server /home/tf2server/tf2server restart" >> /etc/crontab
 
-# Set a restart of the server for midnight incase it is not done manually.
+# Set a one time restart of the server for midnight.
 sudo shutdown -r -t 0:00
