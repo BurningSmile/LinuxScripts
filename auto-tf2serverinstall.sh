@@ -105,7 +105,7 @@ sudo systemctl enable apache2.service
 mv /var/www/html/index.html /var/www/html/index.html.bak
 
 # Setup metamod and sourcemod
-cat << EOF >> /home/tf2server/source-metamodinstall.sh
+install-metamod () {
 cd /home/tf2server/serverfiles/tf
 wget $METAMODURL
 tar -xf $METAMODFILENAME
@@ -114,25 +114,20 @@ rm $METAMODFILENAME
 wget $SOURCEMODURL
 tar -xf $SOURCEMODFILENAME
 rm $SOURCEMODFILENAME
-EOF
+}
 
-chown tf2server:tf2server /home/tf2server/source-metamodinstall.sh
-chmod +x /home/tf2server/source-metamodinstall.sh
-su - tf2server -c '/home/tf2server/source-metamodinstall.sh'
-su - tf2server -c 'rm /home/tf2server/source-metamodinstall.sh'
+export -f install-metamod
+su tf2server -c "bash -c install-metamod"
 
 # Setup Steam id's for admin
-cat << EOF >> /home/tf2server/steamid.sh
-
+configure-sourcemod-admins () {
 cat <<EOL >> /home/tf2server/serverfiles/tf/addons/sourcemod/configs/admins_simple.ini
 "$STEAMID" "99:z" //$STEAMUSERNAME
 EOL
+}
 
-EOF
-
-chmod +x /home/tf2server/steamid.sh
-su - tf2server -c '/home/tf2server/steamid.sh'
-su - tf2server -c 'rm -f /home/tf2server/steamid.sh'
+export -f configure-sourcemod-admins
+su tf2server -c "bash -c configure-sourcemod-admins"
 
 # Start the tf2server
 su - tf2server -c '/home/tf2server/tf2server start'
