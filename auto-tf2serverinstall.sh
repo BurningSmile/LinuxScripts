@@ -32,7 +32,7 @@ sudo apt-get -y autoremove
 sudo apt-get autoclean
 
 # Install dependices for the tf2server instance
-sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386 vim -y
+sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install mailutils curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386 vim -y
 
 # Add user account
 useradd -m -s /bin/bash tf2server
