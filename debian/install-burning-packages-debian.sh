@@ -140,24 +140,12 @@ mv ~/dotfiles/cava/config ~/.config/cava
 # Setup Urxvt
 sudo apt-get -y install rxvt-unicode-256color
 
-# Install zshell
+# Install zsh
 sudo apt-get -y install zsh
 
-# Install prezto
-cat << 'EOF' >> /tmp/prezto-install.sh
-#!/usr/bin/zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-EOF
-
-chmod +x /tmp/prezto-install.sh
-/tmp/prezto-install.sh
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
 mv ~/dotfiles/zsh/.zshrc ~/.zshrc
-mv ~/dotfiles/zsh/zpreztorc ~/.zprezto/runcoms/zpreztorc
-chsh -s /bin/zsh
 
 # Cleanup
 cd ~
