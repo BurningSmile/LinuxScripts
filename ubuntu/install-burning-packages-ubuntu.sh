@@ -95,7 +95,7 @@ cd ~
 sudo apt-get -y install python-pip powerline fonts-powerline
 
 # Install tmux
-sudo apt-get -y install tmux xsel # xsel is for x copy support
+sudo apt-get -y install tmux xclip xsel # xsel is for x copy support
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
 mv .tmux.conf ~

@@ -98,7 +98,7 @@ cd ~
 sudo pacman -S --needed powerline powerline-fonts powerline-vim --noconfirm
 
 # Install tmux
-sudo pacman -S --needed tmux xsel --noconfirm
+sudo pacman -S --needed tmux xclip xsel --noconfirm
 sudo aura -Aa tmux-bash-completition --noconfirm
 cd ~/dotfiles/tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak # Backup Tmux.conf if present.
