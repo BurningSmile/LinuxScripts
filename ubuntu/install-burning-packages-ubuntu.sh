@@ -21,12 +21,13 @@ sudo apt-get -y install numix-folders numix-icon-theme numix-icon-theme-circle n
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install polybar
-sudo apt-get -y install build-essential cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev clang
+sudo apt-get -y install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
 cd /tmp
 git clone --recursive https://github.com/jaagr/polybar
 mkdir polybar/build
 cd polybar/build
 cmake ..
+make -j$(nproc)
 sudo make install
 cd ~
 
@@ -149,9 +150,17 @@ sudo apt-get -y install rxvt-unicode-256color
 # Install zsh
 sudo apt-get -y install zsh
 
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
+# Install zprezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+chsh -s /bin/zsh
+
 mv ~/dotfiles/zsh/.zshrc ~/.zshrc
+mv ~/dotfiles/zsh/zpreztorc ~/.zpreztorc
 
 # Cleanup
 cd ~
