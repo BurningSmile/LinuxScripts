@@ -1,5 +1,8 @@
 #/bin/bash
 
+POLYBARURL=https://github.com/jaagr/polybar/releases/download/3.3.0/polybar-3.3.0.tar
+POLYBARNAME=polybar-3.3.0.tar
+
 # Get sudo permissions for script run
 sudo -v
 
@@ -23,12 +26,10 @@ sudo cp ~/.Xresources ~/.Xresources.bak
 # Install polybar
 sudo apt-get -y install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
 cd /tmp
-git clone --recursive https://github.com/jaagr/polybar
-mkdir polybar/build
-cd polybar/build
-cmake ..
-make -j$(nproc)
-sudo make install
+wget $POLYBARURL
+tar -xf $POLYBARNAME
+cd polybar
+./build.sh --all-features -A
 cd ~
 
 # Istall fonts for system
