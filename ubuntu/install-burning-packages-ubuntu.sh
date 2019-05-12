@@ -157,12 +157,20 @@ sudo apt-get -y install zsh
 
 # Install zprezto
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+cat <<EOF>> /tmp/zpresto-install.sh
+#!/usr/bin/zsh
 setopt EXTENDED_GLOB
 
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 chsh -s /bin/zsh
+
+EOF
+
+chmod +x /tmp/zpresto-install.sh
+/tmp/zpresto-install.sh
 
 mv ~/dotfiles/zsh/.zshrc ~/.zshrc
 mv ~/dotfiles/zsh/zpreztorc ~/.zpreztorc
