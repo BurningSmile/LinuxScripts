@@ -1,7 +1,7 @@
 #/bin/bash
 
-POLYBARURL=https://github.com/jaagr/polybar/releases/download/3.3.0/polybar-3.3.0.tar
-POLYBARNAME=polybar-3.3.0.tar
+POLYBARURL=https://github.com/polybar/polybar/releases/download/3.3.1/polybar-3.3.1.tar
+POLYBARNAME=polybar-3.3.1.tar
 
 # Get sudo permissions for script run
 sudo -v
@@ -24,12 +24,16 @@ sudo apt-get -y install numix-folders numix-icon-theme numix-icon-theme-circle n
 sudo cp ~/.Xresources ~/.Xresources.bak
 
 # Install polybar
-sudo apt-get -y install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
+sudo apt-get -y install build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libasound2-dev libmpdclient-dev libnl-genl-3-dev
 cd /tmp
 wget $POLYBARURL
 tar -xf $POLYBARNAME
 cd polybar
-./build.sh --all-features -A
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+sudo make install
 cd ~
 
 # Istall fonts for system
