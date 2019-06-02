@@ -156,10 +156,10 @@ sudo apt-get -y install rxvt-unicode-256color
 sudo apt-get -y install zsh
 
 # Install zprezto
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
 cat <<EOF>> /tmp/zpresto-install.sh
 #!/usr/bin/zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
 setopt EXTENDED_GLOB
 
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
