@@ -152,7 +152,7 @@ sudo apt-get -y install rxvt-unicode-256color
 sudo apt-get -y install zsh
 
 # Install zprezto
-cat <<EOF>> /tmp/zpresto-install.sh
+cat << 'EOF' >> /tmp/zpresto-install.sh
 #!/usr/bin/zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
