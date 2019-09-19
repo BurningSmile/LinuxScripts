@@ -89,13 +89,9 @@ cd ~
 vim +PlugClean +PlugInstall +PlugUpdate +q! +q!
 
 # Install you-complete-me for vim auto completion.
-sudo apt-get -y install cmake clang python-dev python3-dev
-mkdir /tmp/ycm_build
-cd /tmp/ycm_build
-cmake -G "Unix Makefiles" . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
-cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp
-cmake --build . --target ycm_core --config Release
-cd ~
+sudo apt-get -y install build-essential cmake python3-dev
+cd ~/.vim/plugged/YouCompleteMe/
+python3 install.py --clang-completer
 
 # Install powerline
 sudo apt-get -y install python-pip powerline fonts-powerline
