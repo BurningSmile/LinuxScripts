@@ -1,5 +1,6 @@
 #!/bin/bash
-#Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please auit the code below before running in your envoirment.
+#Purpose - This is a script to automate the process of installing a tf2server stack on a clean Debian or Ubuntu server instance. The script needs to be ran as root to function properly. Please audit the code below before running in your environment.
+# Usage: Call the script with ./auto-tf2serverinstall.sh <tf2-user-pass>
 
 # Variables used in script.
 export METAMODURL='https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git961-linux.tar.gz'
@@ -10,13 +11,31 @@ export STEAMID='PUT-STEAM-ID-HERE'
 export STEAMUSERNAME='PUT-STEAM-USERNAME-HERE'
 export DEFAULTMAP='pl_upward'
 export PLAYERS='24'
+export PASSWORD="$1"
 
-# Check if running with sudo/root privilages
+# Set script basename
+SCRIPT=`basename ${BASH_SOURCE[0]}`
+
+# Usage function
+usage() {
+    echo "Call this script with $SCRIPT <tf2-user-pass>"
+    echo "Example: $SCRIPT fjlafjlajf13@"
+    exit 1
+}
+
+# Check for required inputs
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+# Check if running with sudo/root privileges
 if [ "$EUID" -ne 0 ]
 then
   echo "Run as root or use sudo."
   exit 1
 fi
+
+# Check for required variables
 
 # Check for sudo and install if not found in $path.
 which sudo > /dev/null || apt-get -y install sudo
@@ -31,12 +50,12 @@ sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
 sudo apt-get autoclean
 
-# Install dependices for the tf2server instance
-sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get -y install mailutils curl wget file bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386
+# Install dependencies for the tf2server instance
+sudo dpkg --add-architecture i386; sudo apt update; sudo apt install mailutils curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386 libtcmalloc-minimal4:i386
 
 # Add user account
 useradd -m -s /bin/bash tf2server
-passwd tf2server
+echo "tf2server:$PASSWORD" | chpasswd
 
 # Get the framework script and install the server.
 su - tf2server -c 'wget -N --no-check-certificate https://linuxgsm.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && /bin/bash linuxgsm.sh tf2server'
@@ -66,7 +85,7 @@ sudo ip6tables -t mangle -F
 sudo ip6tables -F
 sudo ip6tables -X
 
-# Confiure ipv4 firewall
+# Configure ipv4 firewall
 sudo iptables -I INPUT 1 -i lo -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
