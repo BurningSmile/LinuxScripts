@@ -35,8 +35,6 @@ then
   exit 1
 fi
 
-# Check for required variables
-
 # Check for sudo and install if not found in $path.
 which sudo > /dev/null || apt-get -y install sudo
 
