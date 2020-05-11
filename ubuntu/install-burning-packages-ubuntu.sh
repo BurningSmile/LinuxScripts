@@ -1,7 +1,7 @@
 #/bin/bash
 
-POLYBARURL=https://github.com/polybar/polybar/releases/download/3.3.1/polybar-3.3.1.tar
-POLYBARNAME=polybar-3.3.1.tar
+POLYBARURL=https://github.com/polybar/polybar/releases/download/3.4.2/polybar-3.4.2.tar
+POLYBARNAME=polybar-3.4.2.tar
 
 # Get sudo permissions for script run
 sudo -v
@@ -14,11 +14,6 @@ sudo apt-get autoclean
 
 # Install i3 and other packages
 sudo apt-get -y install curl compton dunst feh i3 i3lock libjsoncpp1 libmpdclient2 lxappearance rofi git wget unzip xautolock
-
-# Install numix icons
-sudo apt-add-repository ppa:numix/ppa -y
-sudo apt-get update
-sudo apt-get -y install numix-folders numix-icon-theme numix-icon-theme-circle numix-icon-theme-square
 
 # Backup .Xresources
 sudo cp ~/.Xresources ~/.Xresources.bak
@@ -76,7 +71,7 @@ mkdir ~/Pictures/backgrounds
 mv ~/dotfiles/i3/Background/firewatch_ARC.jpg ~/Pictures/backgrounds
 
 # Install Vim
-sudo apt-get -y install vim-gtk
+sudo apt-get -y install vim-gtk3
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cd ~/dotfiles/vim
 mkdir ~/.vim/
@@ -94,7 +89,7 @@ cd ~/.vim/plugged/YouCompleteMe/
 python3 install.py --clang-completer
 
 # Install powerline
-sudo apt-get -y install python-pip powerline fonts-powerline
+sudo apt-get -y install python3-pip powerline fonts-powerline
 
 # Install tmux
 sudo apt-get -y install tmux xclip xsel # xsel is for x copy support
